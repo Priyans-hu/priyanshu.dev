@@ -4,7 +4,7 @@ import arrow from '../assets/images/allArrow.png'
 
 export default function Header() {
     const [menuBtn, setMenuBtn] = useState(0);
-    const [menuOpen, setMenuOpen] = useState(true);
+    const [menuOpen, setMenuOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
     const menuToggleHandler = (e) => {
