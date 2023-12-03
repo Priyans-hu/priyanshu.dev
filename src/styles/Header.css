@@ -1,0 +1,144 @@
+header {
+    width: 75%;
+    margin: auto;
+}
+
+header .headerContainer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 2.5vw 8vw;
+}
+
+header .headerMainHeading {
+    font-size: 2.1vw;
+    font-weight: 400;
+    user-select: none;
+    cursor: progress;
+    font-style: italic;
+    font-family: 'Playfair Display', sans-serif;
+}
+
+header .headerNavigationContainer {
+    display: flex;
+    align-items: center;
+}
+
+header .headerNavigationContainer .menuToggleBtn {
+    display: none;
+}
+
+header .headerNavigationList {
+    display: flex;
+    font-size: 400;
+    list-style: none;
+    justify-content: space-around;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header .headerNavigationListItem {
+    margin: 0.5vw;
+    font-size: 1vw;
+}
+
+header .headerNavigationListItem:hover {
+    border-bottom: 1px solid white;
+}
+
+header .navLeftFixed .verticalDividerLine {
+    left: 4vw;
+    width: 0.05vw;
+    bottom: 3.5vw;
+    height: 3.8vw;
+    position: fixed;
+    background-color: white;
+    font-family: 'Playfair Display', sans-serif;
+}
+
+header .navLeftFixed .verticalFixed {
+    left: 0;
+    bottom: 11vw;
+    position: fixed;
+    font-weight: 400;
+    font-size: 1vw;
+    user-select: none;
+    font-style: italic;
+    transform: rotate(-90deg);
+    font-family: 'Playfair Display', sans-serif;
+}
+
+@media only screen and (max-width: 1024px) {
+    header {
+        width: 80%;
+    }
+    header .headerContainer {
+        padding: 2.5rem 5rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        width: 90%;
+    }
+    
+    header .headerContainer {
+        padding: 2rem;
+    }
+
+    header .headerMainHeading { 
+        font-size: 5vw;
+    }
+
+    header .headerNavigationListItem {
+        margin: 2vw;
+        font-size: 2vw;
+    }
+    
+    header .navLeftFixed .verticalDividerLine {
+        left: 2rem;
+        bottom: 2rem;
+        height: 50px;
+    }
+    
+    header .navLeftFixed .verticalFixed {
+        left: -1.5rem;
+        bottom: 9rem;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    header {
+        width: 90%;
+    }
+    
+    header .headerContainer {
+        padding: 7vw 5vw;
+        align-items: center;
+    }
+
+    header .headerMainHeading { 
+        font-size: 7vw;
+    }
+    
+    header .headerNavigationList {
+        display: none;
+    }
+
+    header .headerNavigationContainer .menuToggleBtn {
+        display: block;
+        font-size: 4vw;
+    }
+    
+    header .navLeftFixed .verticalDividerLine {
+        left: 3vw;
+        bottom: 6vw;
+        height: 10vw;
+    }
+    
+    header .navLeftFixed .verticalFixed {
+        left: -8vw;
+        bottom: 25vw;
+        font-size: 3vw;
+    }
+}
