@@ -67,6 +67,7 @@ header .headerNavigationListItem:last-child::after {
 header .headerNavigationListItem:hover {
     color: white;
 }
+
 /* header right navigation over */
 
 /* header left side fixed */
@@ -94,37 +95,47 @@ header .navLeftFixed .verticalFixed {
 
 @media only screen and (max-width: 1024px) {
     header {
-        width: 80%;
+        width: 100%;
     }
+
     header .headerContainer {
         padding: 2.5rem 5rem;
+    }
+
+    header .headerMainHeading {
+        font-size: 2.5vw;
+    }
+
+    header .headerNavigationListItem {
+        margin: 0.1vw;
+        font-size: 1.2vw;
     }
 }
 
 @media only screen and (max-width: 768px) {
     header {
-        width: 90%;
+        width: 100%;
     }
-    
+
     header .headerContainer {
         padding: 2rem;
     }
 
-    header .headerMainHeading { 
-        font-size: 5vw;
+    header .headerMainHeading {
+        font-size: 3vw;
     }
 
     header .headerNavigationListItem {
-        margin: 2vw;
+        margin: 0.1vw;
         font-size: 2vw;
     }
-    
+
     header .navLeftFixed .verticalDividerLine {
         left: 2rem;
         bottom: 2rem;
         height: 50px;
     }
-    
+
     header .navLeftFixed .verticalFixed {
         left: -1.5rem;
         bottom: 9rem;
@@ -134,18 +145,18 @@ header .navLeftFixed .verticalFixed {
 
 @media only screen and (max-width: 576px) {
     header {
-        width: 90%;
+        width: 100%;
     }
-    
+
     header .headerContainer {
         padding: 7vw 5vw;
         align-items: center;
     }
 
-    header .headerMainHeading { 
+    header .headerMainHeading {
         font-size: 7vw;
     }
-    
+
     header .headerNavigationList {
         display: none;
     }
@@ -154,13 +165,13 @@ header .navLeftFixed .verticalFixed {
         display: block;
         font-size: 4vw;
     }
-    
+
     header .navLeftFixed .verticalDividerLine {
         left: 3vw;
         bottom: 6vw;
         height: 10vw;
     }
-    
+
     header .navLeftFixed .verticalFixed {
         left: -8vw;
         bottom: 25vw;

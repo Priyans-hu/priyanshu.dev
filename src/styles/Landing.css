@@ -16,7 +16,7 @@
 
 @media only screen and (max-width: 1024px) {
     .contentContainer {
-        height: 85vh;
+        min-height: 85vh;
     }
 
     .contentContainer h1{

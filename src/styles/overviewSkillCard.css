@@ -12,7 +12,7 @@
 .overviewSkillCard:hover {
     cursor: pointer;
     transform: scale(1.01);
-    box-shadow: 0 0 20px 5px rgba(0, 255, 255, 0.7); /* Neon blue shadow on hover */
+    box-shadow: 0 0 20px 5px rgba(0, 255, 255, 0.7);
 }
 
 .overviewSkillCard img {
@@ -36,8 +36,8 @@
 
 @media only screen and (max-width: 576px) {
     .overviewSkillCard {
-        width: 48%;
-        margin: 4vw auto;
+        width: 45%;
+        margin: 2vw;
     }
 
     .overviewSkillCard img {
