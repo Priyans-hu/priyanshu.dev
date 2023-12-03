@@ -9,21 +9,21 @@ header .headerContainer {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    padding: 2vw;
+    padding: 1.5vw 2vw;
 }
 
 header .headerMainHeading {
-    color: gray;
-    font-size: 1.5vw;
     font-weight: 400;
-    user-select: none;
+    font-size: 1.5vw;
     cursor: progress;
+    user-select: none;
     font-style: italic;
+    color: rgb(153, 153, 153);
     font-family: 'Playfair Display', sans-serif;
 }
 
 header .headerMainHeading:hover {
-    color: rgb(153, 153, 153);
+    color: white;
     cursor: progress;
 }
 
@@ -48,11 +48,11 @@ header .headerNavigationList {
 header .headerNavigationListItem {
     color: gray;
     margin: 0.2vw;
-    font-size: 0.8vw;
+    font-size: 0.7vw;
 }
 
 header .headerNavigationListItem::after {
-    content: " |";
+    content: " /";
 }
 
 header .headerNavigationListItem:hover:after {
@@ -93,6 +93,24 @@ header .navLeftFixed .verticalFixed {
     font-family: 'Playfair Display', sans-serif;
 }
 
+/* header right fixed */
+header .navRightFixed .toTopArrow {
+    right: 0;
+    bottom: 3.5vw;
+    cursor: pointer;
+    position: fixed;
+    transform: rotate(-90deg);
+}
+
+header .navRightFixed .toTopArrow img {
+    width: 3.5vw;
+}
+
+.hidden {
+    display: none;
+}
+
+/* responsiveness code */
 @media only screen and (max-width: 1024px) {
     header {
         width: 100%;

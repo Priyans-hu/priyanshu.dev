@@ -10,6 +10,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	scroll-behavior: smooth;
 }
 
 /* scrollbar customisation */
@@ -41,6 +42,12 @@
 a {
 	color: inherit;
 	text-decoration: none;
+}
+
+button {
+	border: none;
+	outline: none;
+	background-color: transparent;
 }
 
 body {
@@ -84,17 +91,18 @@ section {
 }
 
 .App * {
-	transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out, 
+				color 0.1s ease-in;
 }
 
 @media only screen and (max-width: 1024px) {
-	section { 
+	section {
 		padding: 15vw 5vw;
 	}
 }
 
 @media only screen and (max-width: 576px) {
-	section { 
+	section {
 		padding: 30vw 5vw;
 	}
 }

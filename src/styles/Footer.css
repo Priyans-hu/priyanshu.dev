@@ -1,0 +1,26 @@
+footer {
+    position: relative;
+    font-family: 'Lato', sans-serif
+}
+
+footer .footerContainer {
+    bottom: 0;
+    width: 100%;
+    margin: 2vw;
+    text-align: center;
+    position: absolute;
+}
+
+footer .footerContainer p {
+    font-size: 0.9vw;
+    font-weight: 300;
+    user-select: none;
+}
+
+.footerContainer .socialIcons {
+    margin-top: 1vw;
+}
+
+.footerContainer .socialIcons a {
+    margin: 0 0.5vw ;
+}

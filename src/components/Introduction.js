@@ -20,8 +20,8 @@ const Introduction = () => {
                 </div>
                 <div className="overviewSkillCardsContainer">
                     <OverviewSkillCard title={'FullStack developer'} imgName={fullStack} />
-                    <OverviewSkillCard title={'Backend developer'} imgName={backend} />
                     <OverviewSkillCard title={'Frontend developer'} imgName={frontend} />
+                    <OverviewSkillCard title={'Backend developer'} imgName={backend} />
                     <OverviewSkillCard title={'Reactjs developer'} imgName={reactjs} />
                 </div>
             </div>

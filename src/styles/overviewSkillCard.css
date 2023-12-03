@@ -1,7 +1,7 @@
 .overviewSkillCard {
     padding: 20px;
-    width: 22.5vw;
-    margin: 1vw auto;
+    width: 20vw;
+    margin: 0.4vw auto;
     text-align: center;
     border-radius: 10px; 
     backdrop-filter: blur(10px); 
@@ -24,8 +24,8 @@
 
 @media only screen and (max-width: 1024px) {
     .overviewSkillCard {
-        width: 45%;
-        margin: 4vw auto;
+        width: 40%;
+        margin: 1vw auto;
     }
 
     .overviewSkillCard img {
