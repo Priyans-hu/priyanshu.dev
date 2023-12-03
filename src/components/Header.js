@@ -4,16 +4,13 @@ import arrow from '../assets/images/allArrow.png'
 
 export default function Header() {
     const [menuBtn, setMenuBtn] = useState(0);
+    const [menuOpen, setMenuOpen] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
 
     const menuToggleHandler = (e) => {
-        if (menuBtn) {
-            setMenuBtn(0);
-            e.target.classList.remove('fa-xmark');
-        } else {
-            setMenuBtn(1);
-            e.target.classList.add('fa-xmark');
-        }
+        setMenuBtn(!menuBtn);
+        setMenuOpen(!menuOpen);
+        e.target.classList.toggle('fa-xmark');
     }
 
     useEffect(() => {
@@ -46,7 +43,7 @@ export default function Header() {
                     <h1 className='headerMainHeading'>प्रियांशू</h1>
                     <div className='headerNavigationContainer'>
                         <i className='fa-solid fa-bars menuToggleBtn' onClick={menuToggleHandler}></i>
-                        <ul className='headerNavigationList'>
+                        <ul className={`headerNavigationList ${menuOpen ? 'open' : 'close'}`}>
                             <li className='headerNavigationListItem'><a href='/about'>About</a></li>
                             <li className='headerNavigationListItem'><a href='/work'>Work</a></li>
                             <li className='headerNavigationListItem'><a href='/contact'>Contact</a></li>
@@ -56,7 +53,7 @@ export default function Header() {
             </div>
             <div className="navLeftFixed">
                 <div className='verticalDividerLine'></div>
-                <div className='verticalFixed'>Priyanshu / 2023</div>
+                <div className='verticalFixed'>Priyanshu / {new Date().getFullYear()}</div>
             </div>
             <div className="navRightFixed">
                 <div className={`toTopArrow ${isVisible ? 'visible' : 'hidden'}`}>

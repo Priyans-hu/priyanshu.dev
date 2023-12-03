@@ -115,15 +115,15 @@ header .navRightFixed .toTopArrow img {
     header {
         width: 100%;
     }
-
+    
     header .headerContainer {
         padding: 2.5rem 5rem;
     }
-
+    
     header .headerMainHeading {
         font-size: 2.5vw;
     }
-
+    
     header .headerNavigationListItem {
         margin: 0.1vw;
         font-size: 1.2vw;
@@ -134,7 +134,7 @@ header .navRightFixed .toTopArrow img {
     header {
         width: 100%;
     }
-
+    
     header .headerContainer {
         padding: 2rem;
     }
@@ -142,22 +142,25 @@ header .navRightFixed .toTopArrow img {
     header .headerMainHeading {
         font-size: 3vw;
     }
-
+    
     header .headerNavigationListItem {
         margin: 0.1vw;
         font-size: 2vw;
     }
-
+    
     header .navLeftFixed .verticalDividerLine {
         left: 2rem;
         bottom: 2rem;
         height: 50px;
     }
-
+    
     header .navLeftFixed .verticalFixed {
         left: -1.5rem;
         bottom: 9rem;
         font-size: 1rem;
+    }
+    header .navRightFixed .toTopArrow img {
+        width: 6vw;
     }
 }
 
@@ -165,34 +168,66 @@ header .navRightFixed .toTopArrow img {
     header {
         width: 100%;
     }
-
+    
     header .headerContainer {
         padding: 7vw 5vw;
         align-items: center;
     }
-
+    
     header .headerMainHeading {
         font-size: 7vw;
     }
-
-    header .headerNavigationList {
+    
+    header .open {
+        display: block;
+        flex-direction: column;
+        transition: display 0.3s ease-in-out;
+    }
+    
+    header .close {
         display: none;
     }
+    
+    header .headerNavigationList {
+        top: 20vw;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        padding: 10vw;
+        color: white;
+        font-size: 4vw;
+        position: absolute;
+        box-sizing: border-box;
+        background-color: black;
+    }
 
+    header .headerNavigationListItem {
+        font-size: 6vw;
+        margin: 2vw auto;
+    }
+
+    header .headerNavigationListItem::after {
+        content: "";
+    }
+    
     header .headerNavigationContainer .menuToggleBtn {
         display: block;
         font-size: 4vw;
     }
-
+    
     header .navLeftFixed .verticalDividerLine {
         left: 3vw;
         bottom: 6vw;
         height: 10vw;
     }
-
+    
     header .navLeftFixed .verticalFixed {
         left: -8vw;
         bottom: 25vw;
         font-size: 3vw;
+    }
+
+    header .navRightFixed .toTopArrow img {
+        width: 6.5vw;
     }
 }
