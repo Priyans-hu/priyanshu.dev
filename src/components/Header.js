@@ -4,6 +4,7 @@ import arrow from '../assets/images/allArrow.png'
 
 export default function Header() {
     const [menuBtn, setMenuBtn] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
 
     const menuToggleHandler = (e) => {
         if (menuBtn) {
@@ -15,24 +16,16 @@ export default function Header() {
         }
     }
 
-    const [isVisible, setIsVisible] = useState(false);
-
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.scrollY;
-
-            // Show/hide scroll to top button based on scroll position
-            if (scrollTop > 20) {
+        if (scrollTop > 20) {
                 setIsVisible(true);
             } else {
                 setIsVisible(false);
             }
         };
-
-        // Attach scroll event listener
         window.addEventListener('scroll', handleScroll);
-
-        // Clean up the event listener on component unmount
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
@@ -41,7 +34,7 @@ export default function Header() {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth', // Add smooth scrolling behavior
+            behavior: 'smooth', 
         });
     };
 

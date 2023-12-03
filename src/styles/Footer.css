@@ -17,10 +17,20 @@ footer .footerContainer p {
     user-select: none;
 }
 
-.footerContainer .socialIcons {
-    margin-top: 1vw;
+@media only screen and (max-width: 1024px) {
+    footer .footerContainer p {
+        font-size: 1.3vw;
+    }
 }
 
-.footerContainer .socialIcons a {
-    margin: 0 0.5vw ;
+@media only screen and (max-width: 768px) {
+    footer .footerContainer p {
+        font-size: 1.7vw;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    footer .footerContainer p {
+        font-size: 3vw;
+    }
 }
