@@ -56,7 +56,7 @@ body {
 }
 
 section {
-	padding: 5vw;
+	padding: 9vw 5vw;
 	min-height: 100vh;
 	position: relative;
 	height: max-content;

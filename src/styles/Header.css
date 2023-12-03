@@ -1,22 +1,30 @@
 header {
-    width: 75%;
+    width: 100%;
     margin: auto;
+    z-index: 999;
+    position: fixed;
 }
 
 header .headerContainer {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    padding: 2.5vw 8vw;
+    padding: 2vw;
 }
 
 header .headerMainHeading {
-    font-size: 2.1vw;
+    color: gray;
+    font-size: 1.5vw;
     font-weight: 400;
     user-select: none;
     cursor: progress;
     font-style: italic;
     font-family: 'Playfair Display', sans-serif;
+}
+
+header .headerMainHeading:hover {
+    color: rgb(153, 153, 153);
+    cursor: progress;
 }
 
 header .headerNavigationContainer {
@@ -28,6 +36,7 @@ header .headerNavigationContainer .menuToggleBtn {
     display: none;
 }
 
+/* header navigation list right */
 header .headerNavigationList {
     display: flex;
     font-size: 400;
@@ -37,14 +46,30 @@ header .headerNavigationList {
 }
 
 header .headerNavigationListItem {
-    margin: 0.5vw;
-    font-size: 1vw;
+    color: gray;
+    margin: 0.2vw;
+    font-size: 0.8vw;
+}
+
+header .headerNavigationListItem::after {
+    content: " |";
+}
+
+header .headerNavigationListItem:hover:after {
+    color: gray;
+}
+
+header .headerNavigationListItem:last-child::after {
+    content: "";
+    color: gray;
 }
 
 header .headerNavigationListItem:hover {
-    border-bottom: 1px solid white;
+    color: white;
 }
+/* header right navigation over */
 
+/* header left side fixed */
 header .navLeftFixed .verticalDividerLine {
     left: 4vw;
     width: 0.05vw;
