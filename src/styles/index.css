@@ -60,6 +60,7 @@ section {
 	min-height: 100vh;
 	position: relative;
 	height: max-content;
+	box-sizing: border-box;
 }
 
 .backgroundContainer {
