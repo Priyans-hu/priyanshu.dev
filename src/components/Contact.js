@@ -8,31 +8,31 @@ const Contact = () => {
     const [sub, setSub] = useState('');
     const [additional, setAdditional] = useState('');
 
-    const handleSubmit = async (e) => {
+    // const handleSubmit = async (e) => {
         
-        e.preventDefault();
+    //     e.preventDefault();
         
-        try {
-            // Send form data to backend service
-            await axios.post('http://localhost:3001/submit-form', {
-                name,
-                email,
-                subject: sub,
-                more: additional || 'N/A'
-            });
+    //     try {
+    //         // Send form data to backend service
+    //         await axios.post('http://localhost:3001/submit-form', {
+    //             name,
+    //             email,
+    //             subject: sub,
+    //             more: additional || 'N/A'
+    //         });
             
-            // Reset form fields after successful submission
-            setName('');
-            setEmail('');
-            setSub('');
-            setAdditional('');
+    //         // Reset form fields after successful submission
+    //         setName('');
+    //         setEmail('');
+    //         setSub('');
+    //         setAdditional('');
             
-            alert('Message sent successfully!');
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Oops! Something went wrong. Please try again later.');
-        }
-    };
+    //         alert('Message sent successfully!');
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //         alert('Oops! Something went wrong. Please try again later.');
+    //     }
+    // };
 
     return (
         <section className='contactContainer'>
