@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/Contact.css'
+import axios from 'axios'
 
 const Contact = () => {
     const [name, setName] = useState('');
@@ -7,10 +8,31 @@ const Contact = () => {
     const [sub, setSub] = useState('');
     const [additional, setAdditional] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+        
         e.preventDefault();
-        console.log(`Details: Name - ${name}, Email - ${email}, Subject - ${sub}, Additional - ${additional || 'N/A'}`);
-    }    
+        
+        try {
+            // Send form data to backend service
+            await axios.post('http://localhost:3001/submit-form', {
+                name,
+                email,
+                subject: sub,
+                more: additional || 'N/A'
+            });
+            
+            // Reset form fields after successful submission
+            setName('');
+            setEmail('');
+            setSub('');
+            setAdditional('');
+            
+            alert('Message sent successfully!');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Oops! Something went wrong. Please try again later.');
+        }
+    };
 
     return (
         <section className='contactContainer'>
@@ -31,7 +53,8 @@ const Contact = () => {
                     </div>
                     <div className="contactRight">
                         <h4>Send a message</h4>
-                        <form onSubmit={(e) => handleSubmit(e)}>
+                        {/* onSubmit={(e) => handleSubmit(e)}  */}
+                        <form action="https://formspree.io/f/meqygqjy" method="POST">
                             <input 
                                 type="text" 
                                 name="name" 
