@@ -1,5 +1,6 @@
 import React from 'react';
 import Landing from '../components/Landing';
+import "../../styles/globals.css";
 
 const HomePage = () => {
     return (
