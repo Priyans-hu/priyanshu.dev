@@ -13,9 +13,9 @@ const About = () => {
                 <meta name='description' content='Web Developer and Tech Enthusiast - Priyanshu Garg' />
             </Head>
             <div className='bg-gray-950 pointer-events-none select-none'>
-                <Header />
+                <Header secondary={'home'}/>
                 <div className='min-h-screen flex items-center justify-center'>
-                    <div className='max-w-3xl text-white shadow-md rounded-lg py-8'>
+                    <div className='max-w-3xl text-white w-full mx-auto py-8'>
                         <GeminiEffect />
                         <div className='text-xl text-slate-200 my-20'>
                             <p className='my-12'>
@@ -32,8 +32,8 @@ const About = () => {
                         <div className='my-20'>
                             <h2 className='text-4xl font-semibold my-4'>Skills</h2>
                             <div className='grid grid-cols-1 sm:grid-cols-3 gap-8 my-8'>
-                                <div className='col-span-2 bg-gray-900 bg-opacity-50 backdrop-blur-lg p-6 rounded-lg shadow-md'>
-                                    <h3 className='text-2xl font-semibold mb-2'>Programming Languages</h3>
+                                <div className='col-span-2 bg-gray-900 bg-opacity-50 backdrop-blur-lg p-6 rounded-lg shadow-md border border-white border-opacity-15'>
+                                    <h3 className='text-2xl font-semibold mb-4'>Programming Languages</h3>
                                     <ul className='list-disc pl-5 text-slate-200'>
                                         <li className='mb-2'>Java</li>
                                         <li className='mb-2'>JavaScript</li>
@@ -41,8 +41,8 @@ const About = () => {
                                         <li className='mb-2'>Python</li>
                                     </ul>
                                 </div>
-                                <div className='col-span-1 bg-gray-900 bg-opacity-50 backdrop-blur-lg p-6 rounded-lg shadow-md'>
-                                    <h3 className='text-2xl font-semibold mb-2'>Tools & Technologies</h3>
+                                <div className='col-span-1 bg-gray-900 bg-opacity-50 backdrop-blur-lg p-6 rounded-lg shadow-md border border-white border-opacity-15'>
+                                    <h3 className='text-2xl font-semibold mb-4'>Tools & Technologies</h3>
                                     <ul className='list-disc pl-5 text-slate-200'>
                                         <li className='mb-2'>Git & GitHub</li>
                                         <li className='mb-2'>Docker</li>
@@ -51,15 +51,15 @@ const About = () => {
                                         <li className='mb-2'>Deployment</li>
                                     </ul>
                                 </div>
-                                <div className='col-span-1 bg-gray-900 bg-opacity-50 backdrop-blur-lg p-6 rounded-lg shadow-md'>
-                                    <h3 className='text-2xl font-semibold mb-2'>Databases</h3>
+                                <div className='col-span-1 bg-gray-900 bg-opacity-50 backdrop-blur-lg p-6 rounded-lg shadow-md border border-white border-opacity-15'>
+                                    <h3 className='text-2xl font-semibold mb-4'>Databases</h3>
                                     <ul className='list-disc pl-5 text-slate-200'>
                                         <li className='mb-2'>SQL</li>
                                         <li className='mb-2'>NoSQL (MongoDB)</li>
                                     </ul>
                                 </div>
-                                <div className='col-span-2 bg-gray-900 bg-opacity-50 backdrop-blur-lg p-6 rounded-lg shadow-md'>
-                                    <h3 className='text-2xl font-semibold mb-2'>Web Development</h3>
+                                <div className='col-span-2 bg-gray-900 bg-opacity-50 backdrop-blur-lg p-6 rounded-lg shadow-md border border-white border-opacity-15'>
+                                    <h3 className='text-2xl font-semibold mb-4'>Web Development</h3>
                                     <ul className='list-disc pl-5 text-slate-200'>
                                         <li className='mb-2'>React.js</li>
                                         <li className='mb-2'>Node.js & Express.js</li>
@@ -92,10 +92,10 @@ const About = () => {
                                 </li>
                             </ul>
                         </div>
+                        <div className='text-slate-400 mx-auto max-w-3xl text-3xl text-left'>Feel free to reach out for projects, collaborations, or just to say hello! Currently seeking new opportunities.</div>
+                        <Contact />
                     </div>
                 </div>
-                <div className='text-slate-400 mx-auto max-w-3xl text-3xl text-left'>Feel free to reach out for projects, collaborations, or just to say hello! Currently seeking new opportunities.</div>
-                <Contact />
             </div>
         </>
     );

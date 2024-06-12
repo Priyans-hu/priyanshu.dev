@@ -14,7 +14,7 @@ const HomePage = () => {
                 <meta name="description" content="Web Developer and Tech Enthusiast - Priyanshu Garg" />
             </Head>
             <div className='bg-gray-950'>
-                <Header />
+                <Header secondary={'about'}/>
                 <div>
                     <Landing />
                     <div className='m-auto w-11/12 xl:w-2/3 xl:grid grid-cols-2 gap-4'>
