@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card.tsx";
-import Link from "next/link";
+// import Link from "next/link";
 
 export function ThreeDCard() {
     return (
