@@ -1,12 +1,11 @@
 import React from 'react';
-import { ThreeDCard } from '../../newapp/src/components/WorkCard1';
+import "../../styles/globals.css";
+import { ThreeDCard } from '../components/WorkCard1';
 
 const Work = () => {
     return (
         <main>
-            <div className='homepageMainContainer'>
-                <ThreeDCard />
-            </div>
+            <ThreeDCard />
         </main>
     )
 }
