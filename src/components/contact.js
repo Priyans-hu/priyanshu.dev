@@ -32,7 +32,7 @@ export function Contact() {
                 <div className="text-xl sm:text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400 text-center sm:text-left">
                     <div className="text-left">
                         Build
-                        <FlipWords words={words} />websites <span className='text-base text-slate-400 font-semibold'>(Click to copy)</span><br />
+                        <FlipWords words={words} />websites <span className='text-base text-neutral-600 dark:text-neutral-400 font-semibold'>(Click to copy)</span><br />
                     </div>
                     <div
                         className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white cursor-pointer mt-4"
