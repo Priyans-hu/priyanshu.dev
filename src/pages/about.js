@@ -13,7 +13,7 @@ const About = () => {
                 <meta name='description' content='Web Developer and Tech Enthusiast - Priyanshu Garg' />
             </Head>
             <div className='bg-gray-950 pointer-events-none select-none'>
-                <Header secondary={'home'}/>
+                <Header secondary={'home'} />
                 <div className='min-h-screen flex items-center justify-center'>
                     <div className='max-w-3xl text-white w-full mx-auto py-8'>
                         <GeminiEffect />
