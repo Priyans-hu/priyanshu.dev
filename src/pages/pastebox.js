@@ -17,7 +17,7 @@ const PasteBox = () => {
             </Head>
             <div className='bg-gray-950 min-h-screen'>
                 <Header secondary={'home'} />
-                <main className="p-8">
+                <main className="p-8 px-4">
                     <div className='m-auto md:max-w-4xl xl:w-2/3 text-white'>
                         <h1 className="text-5xl lg:text-6xl font-semibold mt-32 mb-12 lg:mt-52">PasteBox</h1>
                         <div className='text-xl'>
