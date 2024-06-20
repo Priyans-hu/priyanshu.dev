@@ -9,6 +9,10 @@ import "../../styles/globals.css";
 const Ledger = () => {
     const projectDescription = `Ledger is a comprehensive expense management application designed to simplify financial tracking for businesses and individuals. It features robust tools for customer management, expense tracking, invoice generation, and profit tracking.`;
 
+    const challengesDescription = `One of the major challenges was deciding whether to use MongoDB or MySQL for the database. After careful consideration, we opted to use both databases to leverage their respective strengths. Another challenge was ensuring seamless user authentication and maintaining a responsive design for various devices.`;
+
+    const projectInsightsDescription = `The Ledger application aims to provide an intuitive and efficient way to manage business expenses and income. It features a user-friendly interface and powerful backend capabilities to ensure seamless financial management. By utilizing a combination of databases, the application can efficiently handle different types of data storage and retrieval operations, ensuring high performance and scalability.`;
+
     return (
         <>
             <Head>
@@ -52,7 +56,15 @@ const Ledger = () => {
                                     className="rounded-lg"
                                 />
                             </div>
-                            <p className="text-xl mb-6">The Ledger application aims to provide an intuitive and efficient way to manage business expenses and income. It features a user-friendly interface and powerful backend capabilities to ensure seamless financial management.</p>
+                            <p className="text-xl my-8">{projectInsightsDescription}</p>
+                            <div className="mb-8">
+                                <p className="font-semibold text-2xl mb-2">Project Insights:</p>
+                                <p className="text-xl mb-6">{projectInsightsDescription}</p>
+                            </div>
+                            <div className='mb-8'>
+                                <p className="font-semibold text-2xl mb-2">Challenges:</p>
+                                <p className="text-xl mb-6">{challengesDescription}</p>
+                            </div>
                             <div className="mb-8">
                                 <p className="font-semibold text-2xl mb-2">Key Features:</p>
                                 <ul className="list-disc ml-8 mb-4">
