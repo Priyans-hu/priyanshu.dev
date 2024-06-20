@@ -19,6 +19,10 @@ const HomePage = () => {
                     <Landing />
                     <div className='m-auto w-11/12 xl:w-2/3 xl:grid grid-cols-2 gap-4'>
                         <ThreeDCard 
+                            title='Ledger'
+                            img='https://i.pinimg.com/originals/f2/4f/ad/f24fad039ee33d843aad67aac29160fc.png'
+                        />
+                        <ThreeDCard 
                             title='UrbanKicks'
                             img='https://images.unsplash.com/photo-1460925895917-afdab827c52f'
                         />
