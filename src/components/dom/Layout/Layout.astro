@@ -6,6 +6,7 @@ import { SEO } from "astro-seo"
 import "~/styles/global.css"
 import BasicScripts from "~/components/dom/common/BasicScripts.astro"
 import Scene from "~/components/canvas/Scene"
+import Enhancements from "~/components/dom/common/Enhancements"
 
 // Helper imports
 import { seoConfig } from "~/utils/seoConfig"
@@ -107,6 +108,9 @@ const {
 		<div class="relative z-0">
 			<slot />
 		</div>
+
+		<!-- UI Enhancements: Easter eggs, sounds, back-to-top, smooth scroll -->
+		<Enhancements client:only="react" />
 
 		<BasicScripts />
 	</body>

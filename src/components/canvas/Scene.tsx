@@ -6,9 +6,19 @@ import { isMobile } from 'react-device-detect'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Vector3 } from 'three'
 import { extend } from "@react-three/fiber"
-import { useRef, useMemo, useEffect, useState } from 'react'
+import { useRef, useMemo, useEffect, useState, createContext, useContext } from 'react'
 
 extend(THREE as any)
+
+// Global scroll state
+const scrollState = { progress: 0, velocity: 0 }
+
+/**
+ * Hook to access scroll state in 3D components
+ */
+function useScroll() {
+	return scrollState
+}
 
 /**
  * Glowing orb that follows mouse cursor via global event listener
@@ -152,11 +162,13 @@ function MouseFollower() {
 }
 
 /**
- * Floating geometric shapes dispersed across the viewport
+ * Floating geometric shapes dispersed across the viewport - scroll reactive
  */
 function FloatingShapes() {
 	const groupRef = useRef<THREE.Group>(null)
+	const meshRefs = useRef<(THREE.Mesh | null)[]>([])
 	const { pointer } = useThree()
+	const scroll = useScroll()
 
 	// Pre-defined positions spread across corners and edges
 	const shapes = useMemo(() => {
@@ -176,20 +188,43 @@ function FloatingShapes() {
 		]
 		return positions.map((position, i) => ({
 			position,
+			basePosition: [...position] as [number, number, number],
 			rotation: Math.random() * Math.PI,
 			scale: 0.2 + Math.random() * 0.35,
 			speed: 0.2 + Math.random() * 0.3,
-			type: i % 4
+			type: i % 4,
+			scrollOffset: Math.random() * Math.PI * 2
 		}))
 	}, [])
 
 	useFrame((state) => {
 		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+
+		// Group rotation based on mouse
 		groupRef.current.rotation.y = THREE.MathUtils.lerp(
 			groupRef.current.rotation.y,
-			pointer.x * 0.05,
+			pointer.x * 0.05 + scroll.progress * 0.5,
 			0.01
 		)
+
+		// Individual mesh reactions to scroll
+		meshRefs.current.forEach((mesh, i) => {
+			if (!mesh) return
+			const shape = shapes[i]
+
+			// Rotate faster based on scroll velocity
+			mesh.rotation.x += 0.01 + Math.abs(scroll.velocity) * 0.1
+			mesh.rotation.y += 0.005 + Math.abs(scroll.velocity) * 0.05
+
+			// Pulse scale based on scroll
+			const scrollPulse = 1 + Math.sin(scroll.progress * Math.PI * 2 + shape.scrollOffset) * 0.2
+			mesh.scale.setScalar(shape.scale * scrollPulse)
+
+			// Slight position offset based on scroll
+			const yOffset = Math.sin(scroll.progress * Math.PI * 4 + shape.scrollOffset) * 0.5
+			mesh.position.y = shape.basePosition[1] + yOffset
+		})
 	})
 
 	return (
@@ -198,11 +233,14 @@ function FloatingShapes() {
 				<Float
 					key={i}
 					speed={shape.speed}
-					rotationIntensity={0.5}
-					floatIntensity={0.5}
+					rotationIntensity={0.3}
+					floatIntensity={0.3}
 					position={shape.position}
 				>
-					<mesh scale={shape.scale}>
+					<mesh
+						ref={(el) => { meshRefs.current[i] = el }}
+						scale={shape.scale}
+					>
 						{shape.type === 0 && <boxGeometry args={[1, 1, 1]} />}
 						{shape.type === 1 && <octahedronGeometry args={[1]} />}
 						{shape.type === 2 && <tetrahedronGeometry args={[1]} />}
@@ -398,6 +436,33 @@ const defaultCanvasProps = {
 	dpr: typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1,
 }
 
+/**
+ * Component to update scroll state
+ */
+function ScrollTracker() {
+	const lastScroll = useRef(0)
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollY = window.scrollY
+			const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+			const progress = maxScroll > 0 ? scrollY / maxScroll : 0
+			const velocity = scrollY - lastScroll.current
+
+			scrollState.progress = progress
+			scrollState.velocity = velocity * 0.01 // Normalize velocity
+			lastScroll.current = scrollY
+		}
+
+		window.addEventListener('scroll', handleScroll, { passive: true })
+		handleScroll() // Initial call
+
+		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
+
+	return null
+}
+
 export default function Scene() {
 	return (
 		<Canvas
@@ -417,6 +482,7 @@ export default function Scene() {
 			}}
 		>
 			<AdaptiveDpr pixelated />
+			<ScrollTracker />
 
 			{/* Ambient and directional lighting */}
 			<ambientLight intensity={0.4} />
@@ -440,12 +506,6 @@ export default function Scene() {
 
 			{/* Floating wireframe shapes - dispersed */}
 			<FloatingShapes />
-
-			{/* Gradient spheres - corners and edges */}
-			<GradientSphere position={[8, 6, -5]} color="#3b82f6" size={1.8} />
-			<GradientSphere position={[-9, -5, -4]} color="#8b5cf6" size={1.5} />
-			<GradientSphere position={[7, -9, -6]} color="#06b6d4" size={1.2} />
-			<GradientSphere position={[-8, 8, -5]} color="#ec4899" size={1.4} />
 
 			{/* Code brackets - scattered */}
 			<FloatingBrackets position={[-7, 3, -3]} color="#f472b6" scale={1} />
