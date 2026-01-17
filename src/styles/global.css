@@ -119,53 +119,54 @@
 /* ============================================
    JARVIS THEME - Iron Man HUD Inspired
    Futuristic blue/cyan interface like Tony Stark's AI
+   More vibrant and distinct from dark theme
    ============================================ */
 .joy {
-  /* Deep dark blue-black background */
-  --background: oklch(0.12 0.02 240);
-  --foreground: oklch(0.92 0.02 200);
+  /* Very dark blue-black background - more blue than dark theme */
+  --background: oklch(0.08 0.04 220);
+  --foreground: oklch(0.9 0.08 195);
 
-  /* Cards with cyan tint */
-  --card: oklch(0.16 0.03 220);
-  --card-foreground: oklch(0.92 0.02 200);
-  --popover: oklch(0.16 0.03 220);
-  --popover-foreground: oklch(0.92 0.02 200);
+  /* Cards with strong cyan tint */
+  --card: oklch(0.12 0.05 210);
+  --card-foreground: oklch(0.9 0.08 195);
+  --popover: oklch(0.12 0.05 210);
+  --popover-foreground: oklch(0.9 0.08 195);
 
-  /* Arc reactor cyan primary */
-  --primary: oklch(0.75 0.15 200);
-  --primary-foreground: oklch(0.1 0.02 220);
+  /* Vibrant arc reactor cyan primary */
+  --primary: oklch(0.8 0.18 195);
+  --primary-foreground: oklch(0.08 0.04 220);
 
-  /* Darker blue secondary */
-  --secondary: oklch(0.22 0.04 220);
-  --secondary-foreground: oklch(0.85 0.05 200);
+  /* Dark blue secondary with cyan hint */
+  --secondary: oklch(0.18 0.06 210);
+  --secondary-foreground: oklch(0.85 0.1 195);
 
-  /* Muted tones */
-  --muted: oklch(0.2 0.03 220);
-  --muted-foreground: oklch(0.6 0.04 200);
+  /* Muted cyan tones */
+  --muted: oklch(0.15 0.04 210);
+  --muted-foreground: oklch(0.55 0.08 195);
 
-  /* Gold accent like Iron Man suit */
-  --accent: oklch(0.75 0.14 85);
-  --accent-foreground: oklch(0.15 0.02 85);
+  /* Gold accent like Iron Man suit - more prominent */
+  --accent: oklch(0.8 0.16 80);
+  --accent-foreground: oklch(0.1 0.02 80);
 
   --destructive: oklch(0.6 0.22 25);
 
-  /* Borders with cyan glow */
-  --border: oklch(0.75 0.12 200 / 25%);
-  --input: oklch(0.75 0.12 200 / 15%);
-  --ring: oklch(0.75 0.15 200);
+  /* Borders with bright cyan glow */
+  --border: oklch(0.8 0.15 195 / 30%);
+  --input: oklch(0.8 0.15 195 / 20%);
+  --ring: oklch(0.8 0.18 195);
 
   /* Chart colors - JARVIS HUD spectrum */
-  --chart-1: oklch(0.75 0.15 200);  /* Cyan */
-  --chart-2: oklch(0.7 0.12 220);   /* Blue */
-  --chart-3: oklch(0.75 0.14 85);   /* Gold */
-  --chart-4: oklch(0.65 0.1 180);   /* Teal */
-  --chart-5: oklch(0.7 0.08 240);   /* Steel blue */
+  --chart-1: oklch(0.8 0.18 195);   /* Bright Cyan */
+  --chart-2: oklch(0.75 0.15 210);  /* Blue */
+  --chart-3: oklch(0.8 0.16 80);    /* Gold */
+  --chart-4: oklch(0.7 0.12 175);   /* Teal */
+  --chart-5: oklch(0.65 0.1 230);   /* Steel blue */
 
-  /* JARVIS accent colors */
-  --arc-reactor: oklch(0.78 0.18 200);  /* Bright cyan */
-  --stark-gold: oklch(0.75 0.14 85);    /* Iron Man gold */
-  --stark-red: oklch(0.6 0.22 25);      /* Subtle red */
-  --hud-glow: oklch(0.7 0.15 200);      /* HUD cyan glow */
+  /* JARVIS accent colors - more vibrant */
+  --arc-reactor: oklch(0.85 0.2 195);   /* Bright cyan glow */
+  --stark-gold: oklch(0.8 0.16 80);     /* Iron Man gold */
+  --stark-red: oklch(0.6 0.22 25);      /* Warning red */
+  --hud-glow: oklch(0.75 0.18 195);     /* HUD cyan glow */
 }
 
 @layer base {
@@ -216,14 +217,26 @@
   box-shadow: 0 8px 32px oklch(0 0 0 / 25%);
 }
 
-/* JARVIS theme glass card - cyan glow effect */
+/* JARVIS theme glass card - enhanced cyan glow effect */
 .joy .glass-card {
-  background: oklch(from var(--card) l c h / 40%);
-  border: 1px solid oklch(0.75 0.15 200 / 30%);
+  background: oklch(from var(--card) l c h / 50%);
+  border: 1px solid oklch(0.8 0.18 195 / 40%);
   box-shadow:
-    0 8px 32px oklch(0 0 0 / 30%),
-    0 0 1px oklch(0.75 0.15 200 / 50%),
-    inset 0 0 20px oklch(0.75 0.15 200 / 5%);
+    0 8px 32px oklch(0 0 0 / 40%),
+    0 0 2px oklch(0.8 0.18 195 / 60%),
+    0 0 20px oklch(0.8 0.18 195 / 15%),
+    inset 0 0 30px oklch(0.8 0.18 195 / 8%);
+}
+
+/* JARVIS theme specific hover glow for cards */
+.joy .group:hover {
+  box-shadow: 0 0 30px oklch(0.8 0.18 195 / 20%);
+}
+
+/* JARVIS theme nav glow */
+.joy nav {
+  border-color: oklch(0.8 0.18 195 / 20%);
+  box-shadow: 0 4px 20px oklch(0.8 0.18 195 / 10%);
 }
 
 /* Car drive animation for easter egg */
