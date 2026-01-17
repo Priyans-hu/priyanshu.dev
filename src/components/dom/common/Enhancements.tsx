@@ -260,6 +260,158 @@ function CarEasterEgg() {
 	)
 }
 
+// JARVIS/FRIDAY/EDITH quotes from Iron Man
+const JARVIS_QUOTES = [
+	{ ai: "JARVIS", quote: "At your service, sir." },
+	{ ai: "JARVIS", quote: "I do enjoy helping you." },
+	{ ai: "FRIDAY", quote: "You know me, boss." },
+	{ ai: "FRIDAY", quote: "Working on it, boss." },
+	{ ai: "EDITH", quote: "Even Dead, I'm The Hero." },
+	{ ai: "JARVIS", quote: "Perhaps a bit of rest would improve your functioning." },
+]
+
+/**
+ * JARVIS Easter Egg - triggered by typing "jarvis", "friday", or "edith"
+ */
+function JarvisEasterEgg() {
+	const [activeQuote, setActiveQuote] = useState<{ ai: string, quote: string } | null>(null)
+	const [typedText, setTypedText] = useState('')
+
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (e.key.length === 1) {
+				const newText = (typedText + e.key.toLowerCase()).slice(-6)
+				setTypedText(newText)
+
+				if (newText.includes('jarvis') || newText.includes('friday') || newText.includes('edith')) {
+					const quote = JARVIS_QUOTES[Math.floor(Math.random() * JARVIS_QUOTES.length)]
+					setActiveQuote(quote)
+					playJarvisSound()
+					setTimeout(() => setActiveQuote(null), 4000)
+					setTypedText('')
+				}
+			}
+		}
+
+		window.addEventListener('keydown', handleKeyDown)
+		return () => window.removeEventListener('keydown', handleKeyDown)
+	}, [typedText])
+
+	if (!activeQuote) return null
+
+	return (
+		<div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-[9999] animate-in fade-in slide-in-from-top-4 duration-500">
+			<div className="bg-blue-500/10 backdrop-blur-md border border-blue-500/30 rounded-2xl px-6 py-4 shadow-2xl shadow-blue-500/20">
+				<div className="flex items-center gap-3">
+					{/* Arc Reactor Icon */}
+					<div className="relative w-12 h-12">
+						<div className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping" />
+						<div className="relative w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex items-center justify-center">
+							<div className="w-6 h-6 rounded-full bg-white/80" />
+						</div>
+					</div>
+					<div>
+						<p className="text-xs text-blue-400 font-medium uppercase tracking-wider">{activeQuote.ai}</p>
+						<p className="text-foreground font-medium">{activeQuote.quote}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	)
+}
+
+/**
+ * Play JARVIS-like activation sound
+ */
+const playJarvisSound = () => {
+	try {
+		const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+
+		// Futuristic beep sequence
+		const frequencies = [440, 554.37, 659.25, 880]
+		frequencies.forEach((freq, i) => {
+			const oscillator = audioContext.createOscillator()
+			const gainNode = audioContext.createGain()
+
+			oscillator.connect(gainNode)
+			gainNode.connect(audioContext.destination)
+
+			oscillator.frequency.value = freq
+			oscillator.type = 'sine'
+
+			const startTime = audioContext.currentTime + i * 0.08
+			gainNode.gain.setValueAtTime(0.1, startTime)
+			gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + 0.15)
+
+			oscillator.start(startTime)
+			oscillator.stop(startTime + 0.15)
+		})
+	} catch (e) {
+		// Audio not supported
+	}
+}
+
+/**
+ * Logo Click Easter Egg - Triple click on PG logo activates Iron Man mode
+ */
+function LogoClickEasterEgg() {
+	const [clickCount, setClickCount] = useState(0)
+	const [showIronMan, setShowIronMan] = useState(false)
+	const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+	useEffect(() => {
+		const handleClick = (e: MouseEvent) => {
+			const target = e.target as HTMLElement
+			// Check if clicking on the PG logo
+			if (target.closest('a[href="/"]') && target.textContent?.includes('PG')) {
+				setClickCount(prev => {
+					const newCount = prev + 1
+					if (newCount >= 3) {
+						setShowIronMan(true)
+						playJarvisSound()
+						setTimeout(() => setShowIronMan(false), 5000)
+						return 0
+					}
+					return newCount
+				})
+
+				// Reset count after 1 second of no clicks
+				if (timeoutRef.current) clearTimeout(timeoutRef.current)
+				timeoutRef.current = setTimeout(() => setClickCount(0), 1000)
+			}
+		}
+
+		document.addEventListener('click', handleClick)
+		return () => {
+			document.removeEventListener('click', handleClick)
+			if (timeoutRef.current) clearTimeout(timeoutRef.current)
+		}
+	}, [])
+
+	if (!showIronMan) return null
+
+	return (
+		<div className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center">
+			<div className="text-center animate-in zoom-in duration-500">
+				{/* Arc Reactor Animation */}
+				<div className="relative w-32 h-32 mx-auto mb-6">
+					<div className="absolute inset-0 rounded-full bg-blue-500/30 animate-ping" />
+					<div className="absolute inset-2 rounded-full bg-blue-500/20 animate-pulse" />
+					<div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-400 to-cyan-300 flex items-center justify-center">
+						<div className="w-12 h-12 rounded-full bg-white/90 shadow-lg shadow-blue-400/50" />
+					</div>
+					{/* Rotating ring */}
+					<div className="absolute inset-0 rounded-full border-2 border-blue-400/50 animate-spin" style={{ animationDuration: '3s' }}>
+						<div className="absolute top-0 left-1/2 w-2 h-2 -ml-1 -mt-1 rounded-full bg-blue-400" />
+					</div>
+				</div>
+				<p className="text-2xl font-bold text-blue-400">Iron Man Mode</p>
+				<p className="text-muted-foreground mt-2">"I am Iron Man." - Tony Stark</p>
+			</div>
+		</div>
+	)
+}
+
 /**
  * Main Enhancements Component
  */
@@ -268,6 +420,8 @@ export default function Enhancements() {
 		<>
 			<EasterEgg />
 			<CarEasterEgg />
+			<JarvisEasterEgg />
+			<LogoClickEasterEgg />
 			<BackToTop />
 			<SoundEffects />
 			<SmoothScrollHandler />

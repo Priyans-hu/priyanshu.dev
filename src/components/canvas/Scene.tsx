@@ -162,99 +162,376 @@ function MouseFollower() {
 }
 
 /**
- * Floating geometric shapes dispersed across the viewport - scroll reactive
+ * 3D Camera Icon - Photography passion
  */
-function FloatingShapes() {
+function Camera3D({ position, color = "#f59e0b" }: { position: [number, number, number], color?: string }) {
 	const groupRef = useRef<THREE.Group>(null)
-	const meshRefs = useRef<(THREE.Mesh | null)[]>([])
-	const { pointer } = useThree()
 	const scroll = useScroll()
 
-	// Pre-defined positions spread across corners and edges
-	const shapes = useMemo(() => {
-		const positions: [number, number, number][] = [
-			[-8, 4, -3],    // Top left
-			[8, 5, -4],     // Top right
-			[-9, -3, -2],   // Mid left
-			[9, -2, -3],    // Mid right
-			[-7, -8, -4],   // Bottom left
-			[7, -7, -3],    // Bottom right
-			[-6, 8, -5],    // Far top left
-			[6, 9, -4],     // Far top right
-			[0, -10, -3],   // Bottom center
-			[-10, 0, -4],   // Far left
-			[10, 1, -3],    // Far right
-			[0, 12, -5],    // Top center
-		]
-		return positions.map((position, i) => ({
-			position,
-			basePosition: [...position] as [number, number, number],
-			rotation: Math.random() * Math.PI,
-			scale: 0.2 + Math.random() * 0.35,
-			speed: 0.2 + Math.random() * 0.3,
-			type: i % 4,
-			scrollOffset: Math.random() * Math.PI * 2
-		}))
+	useFrame((state) => {
+		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+		groupRef.current.rotation.y = t * 0.3 + scroll.progress * Math.PI
+		groupRef.current.rotation.x = Math.sin(t * 0.5) * 0.2
+	})
+
+	return (
+		<Float speed={0.5} rotationIntensity={0.3} floatIntensity={0.4}>
+			<group ref={groupRef} position={position} scale={0.4}>
+				{/* Camera body */}
+				<mesh>
+					<boxGeometry args={[1.2, 0.8, 0.6]} />
+					<meshStandardMaterial color={color} transparent opacity={0.25} wireframe />
+				</mesh>
+				{/* Lens */}
+				<mesh position={[0, 0, 0.4]}>
+					<cylinderGeometry args={[0.3, 0.35, 0.3, 16]} rotation={[Math.PI / 2, 0, 0]} />
+					<meshStandardMaterial color={color} transparent opacity={0.3} wireframe />
+				</mesh>
+				{/* Viewfinder */}
+				<mesh position={[0, 0.5, 0]}>
+					<boxGeometry args={[0.3, 0.2, 0.25]} />
+					<meshStandardMaterial color={color} transparent opacity={0.25} wireframe />
+				</mesh>
+			</group>
+		</Float>
+	)
+}
+
+/**
+ * Arc Reactor - Iron Man signature
+ */
+function ArcReactor({ position, scale = 1 }: { position: [number, number, number], scale?: number }) {
+	const groupRef = useRef<THREE.Group>(null)
+	const scroll = useScroll()
+
+	useFrame((state) => {
+		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+		groupRef.current.rotation.z = t * 0.5
+		// Pulse effect
+		const pulse = 1 + Math.sin(t * 3) * 0.1 + scroll.velocity * 0.5
+		groupRef.current.scale.setScalar(scale * pulse)
+	})
+
+	return (
+		<Float speed={0.3} rotationIntensity={0.2} floatIntensity={0.3}>
+			<group ref={groupRef} position={position}>
+				{/* Outer ring */}
+				<mesh>
+					<torusGeometry args={[0.8, 0.05, 16, 32]} />
+					<meshStandardMaterial color="#60a5fa" emissive="#60a5fa" emissiveIntensity={0.5} transparent opacity={0.6} />
+				</mesh>
+				{/* Middle ring */}
+				<mesh>
+					<torusGeometry args={[0.55, 0.04, 16, 32]} />
+					<meshStandardMaterial color="#3b82f6" emissive="#3b82f6" emissiveIntensity={0.4} transparent opacity={0.5} />
+				</mesh>
+				{/* Inner core */}
+				<mesh>
+					<torusGeometry args={[0.3, 0.03, 16, 32]} />
+					<meshStandardMaterial color="#93c5fd" emissive="#93c5fd" emissiveIntensity={0.6} transparent opacity={0.7} />
+				</mesh>
+				{/* Center triangle (arc reactor style) */}
+				<mesh rotation={[0, 0, Math.PI / 6]}>
+					<ringGeometry args={[0.1, 0.2, 3]} />
+					<meshStandardMaterial color="#dbeafe" emissive="#dbeafe" emissiveIntensity={0.8} transparent opacity={0.6} side={THREE.DoubleSide} />
+				</mesh>
+			</group>
+		</Float>
+	)
+}
+
+/**
+ * Code Terminal Icon - Developer
+ */
+function Terminal3D({ position, color = "#22c55e" }: { position: [number, number, number], color?: string }) {
+	const groupRef = useRef<THREE.Group>(null)
+	const scroll = useScroll()
+
+	useFrame((state) => {
+		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+		groupRef.current.rotation.y = Math.sin(t * 0.4) * 0.3
+		groupRef.current.rotation.x = Math.sin(t * 0.3) * 0.1 + scroll.progress * 0.5
+	})
+
+	return (
+		<Float speed={0.4} rotationIntensity={0.2} floatIntensity={0.3}>
+			<group ref={groupRef} position={position} scale={0.35}>
+				{/* Terminal window */}
+				<mesh>
+					<boxGeometry args={[1.4, 1, 0.1]} />
+					<meshStandardMaterial color={color} transparent opacity={0.2} wireframe />
+				</mesh>
+				{/* Command prompt > */}
+				<mesh position={[-0.4, 0.2, 0.06]}>
+					<boxGeometry args={[0.15, 0.08, 0.02]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5} transparent opacity={0.6} />
+				</mesh>
+				<mesh position={[-0.25, 0.2, 0.06]} rotation={[0, 0, -Math.PI / 4]}>
+					<boxGeometry args={[0.12, 0.08, 0.02]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5} transparent opacity={0.6} />
+				</mesh>
+				{/* Cursor line */}
+				<mesh position={[0.1, 0.2, 0.06]}>
+					<boxGeometry args={[0.5, 0.06, 0.02]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.4} />
+				</mesh>
+				{/* Code lines */}
+				<mesh position={[-0.1, -0.05, 0.06]}>
+					<boxGeometry args={[0.8, 0.04, 0.02]} />
+					<meshStandardMaterial color={color} transparent opacity={0.3} />
+				</mesh>
+				<mesh position={[0, -0.2, 0.06]}>
+					<boxGeometry args={[0.6, 0.04, 0.02]} />
+					<meshStandardMaterial color={color} transparent opacity={0.3} />
+				</mesh>
+			</group>
+		</Float>
+	)
+}
+
+/**
+ * Music Note - Music passion
+ */
+function MusicNote3D({ position, color = "#a855f7" }: { position: [number, number, number], color?: string }) {
+	const groupRef = useRef<THREE.Group>(null)
+	const scroll = useScroll()
+
+	useFrame((state) => {
+		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+		groupRef.current.rotation.y = t * 0.4
+		groupRef.current.position.y = position[1] + Math.sin(t * 2) * 0.1
+	})
+
+	return (
+		<Float speed={0.6} rotationIntensity={0.4} floatIntensity={0.5}>
+			<group ref={groupRef} position={position} scale={0.3}>
+				{/* Note head */}
+				<mesh position={[0, -0.4, 0]} rotation={[0, 0, -0.3]}>
+					<sphereGeometry args={[0.25, 16, 16]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
+				</mesh>
+				{/* Stem */}
+				<mesh position={[0.2, 0.2, 0]}>
+					<boxGeometry args={[0.06, 1.2, 0.06]} />
+					<meshStandardMaterial color={color} transparent opacity={0.4} />
+				</mesh>
+				{/* Flag */}
+				<mesh position={[0.35, 0.6, 0]} rotation={[0, 0, -0.5]}>
+					<boxGeometry args={[0.3, 0.08, 0.04]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.2} transparent opacity={0.4} />
+				</mesh>
+			</group>
+		</Float>
+	)
+}
+
+/**
+ * AI Brain/Neural Network - Tech/AI interest
+ */
+function AIBrain({ position, color = "#06b6d4" }: { position: [number, number, number], color?: string }) {
+	const groupRef = useRef<THREE.Group>(null)
+	const scroll = useScroll()
+
+	const nodes = useMemo(() => {
+		return [
+			[0, 0, 0], [-0.4, 0.3, 0.1], [0.4, 0.3, -0.1], [-0.3, -0.3, 0.1],
+			[0.3, -0.3, -0.1], [0, 0.5, 0], [0, -0.5, 0]
+		] as [number, number, number][]
 	}, [])
 
 	useFrame((state) => {
 		if (!groupRef.current) return
 		const t = state.clock.elapsedTime
-
-		// Group rotation based on mouse
-		groupRef.current.rotation.y = THREE.MathUtils.lerp(
-			groupRef.current.rotation.y,
-			pointer.x * 0.05 + scroll.progress * 0.5,
-			0.01
-		)
-
-		// Individual mesh reactions to scroll
-		meshRefs.current.forEach((mesh, i) => {
-			if (!mesh) return
-			const shape = shapes[i]
-
-			// Rotate faster based on scroll velocity
-			mesh.rotation.x += 0.01 + Math.abs(scroll.velocity) * 0.1
-			mesh.rotation.y += 0.005 + Math.abs(scroll.velocity) * 0.05
-
-			// Pulse scale based on scroll
-			const scrollPulse = 1 + Math.sin(scroll.progress * Math.PI * 2 + shape.scrollOffset) * 0.2
-			mesh.scale.setScalar(shape.scale * scrollPulse)
-
-			// Slight position offset based on scroll
-			const yOffset = Math.sin(scroll.progress * Math.PI * 4 + shape.scrollOffset) * 0.5
-			mesh.position.y = shape.basePosition[1] + yOffset
-		})
+		groupRef.current.rotation.y = t * 0.3
+		groupRef.current.rotation.x = Math.sin(t * 0.2) * 0.2
 	})
 
 	return (
-		<group ref={groupRef}>
-			{shapes.map((shape, i) => (
-				<Float
-					key={i}
-					speed={shape.speed}
-					rotationIntensity={0.3}
-					floatIntensity={0.3}
-					position={shape.position}
-				>
-					<mesh
-						ref={(el) => { meshRefs.current[i] = el }}
-						scale={shape.scale}
-					>
-						{shape.type === 0 && <boxGeometry args={[1, 1, 1]} />}
-						{shape.type === 1 && <octahedronGeometry args={[1]} />}
-						{shape.type === 2 && <tetrahedronGeometry args={[1]} />}
-						{shape.type === 3 && <torusGeometry args={[1, 0.4, 8, 16]} />}
-						<meshStandardMaterial
-							color={['#60a5fa', '#a78bfa', '#f472b6', '#34d399'][shape.type]}
-							transparent
-							opacity={0.18}
-							wireframe
-						/>
+		<Float speed={0.4} rotationIntensity={0.3} floatIntensity={0.3}>
+			<group ref={groupRef} position={position} scale={0.5}>
+				{/* Neural nodes */}
+				{nodes.map((pos, i) => (
+					<mesh key={i} position={pos}>
+						<sphereGeometry args={[0.1, 12, 12]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.4} transparent opacity={0.6} />
 					</mesh>
-				</Float>
-			))}
-		</group>
+				))}
+				{/* Connections */}
+				<mesh>
+					<octahedronGeometry args={[0.5]} />
+					<meshStandardMaterial color={color} transparent opacity={0.15} wireframe />
+				</mesh>
+			</group>
+		</Float>
+	)
+}
+
+/**
+ * Hexagon HUD - JARVIS style
+ */
+function HexagonHUD({ position, color = "#60a5fa" }: { position: [number, number, number], color?: string }) {
+	const groupRef = useRef<THREE.Group>(null)
+	const scroll = useScroll()
+
+	useFrame((state) => {
+		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+		groupRef.current.rotation.z = t * 0.2
+		groupRef.current.rotation.y = Math.sin(t * 0.3) * 0.3
+		const pulse = 1 + Math.sin(t * 2 + scroll.progress * Math.PI) * 0.1
+		groupRef.current.scale.setScalar(0.4 * pulse)
+	})
+
+	return (
+		<Float speed={0.3} rotationIntensity={0.2} floatIntensity={0.2}>
+			<group ref={groupRef} position={position}>
+				{/* Outer hexagon */}
+				<mesh>
+					<ringGeometry args={[0.7, 0.8, 6]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.4} side={THREE.DoubleSide} />
+				</mesh>
+				{/* Inner hexagon */}
+				<mesh>
+					<ringGeometry args={[0.4, 0.5, 6]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.4} transparent opacity={0.5} side={THREE.DoubleSide} />
+				</mesh>
+				{/* Center dot */}
+				<mesh>
+					<circleGeometry args={[0.15, 6]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.6} transparent opacity={0.6} side={THREE.DoubleSide} />
+				</mesh>
+			</group>
+		</Float>
+	)
+}
+
+/**
+ * Laugh/Comedy Star - Humor element
+ */
+function ComedyStar({ position, color = "#fbbf24" }: { position: [number, number, number], color?: string }) {
+	const groupRef = useRef<THREE.Group>(null)
+
+	useFrame((state) => {
+		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+		groupRef.current.rotation.z = t * 0.5
+		groupRef.current.rotation.y = Math.sin(t * 0.4) * 0.4
+		// Twinkle effect
+		const twinkle = 0.9 + Math.sin(t * 4) * 0.1
+		groupRef.current.scale.setScalar(0.35 * twinkle)
+	})
+
+	return (
+		<Float speed={0.8} rotationIntensity={0.5} floatIntensity={0.6}>
+			<group ref={groupRef} position={position}>
+				{/* Star burst - representing joy/laughter */}
+				{[0, 1, 2, 3, 4, 5].map((i) => (
+					<mesh key={i} rotation={[0, 0, (i * Math.PI) / 3]}>
+						<boxGeometry args={[0.08, 0.6, 0.08]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.4} transparent opacity={0.5} />
+					</mesh>
+				))}
+				{/* Center */}
+				<mesh>
+					<sphereGeometry args={[0.15, 12, 12]} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5} transparent opacity={0.6} />
+				</mesh>
+			</group>
+		</Float>
+	)
+}
+
+/**
+ * Video/Film Reel - Videography passion
+ */
+function FilmReel({ position, color = "#ec4899" }: { position: [number, number, number], color?: string }) {
+	const groupRef = useRef<THREE.Group>(null)
+
+	useFrame((state) => {
+		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+		groupRef.current.rotation.z = t * 0.8
+		groupRef.current.rotation.y = Math.sin(t * 0.3) * 0.2
+	})
+
+	return (
+		<Float speed={0.5} rotationIntensity={0.3} floatIntensity={0.4}>
+			<group ref={groupRef} position={position} scale={0.35}>
+				{/* Outer ring */}
+				<mesh>
+					<torusGeometry args={[0.6, 0.1, 8, 24]} />
+					<meshStandardMaterial color={color} transparent opacity={0.3} wireframe />
+				</mesh>
+				{/* Sprocket holes */}
+				{[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+					<mesh key={i} position={[Math.cos((i * Math.PI) / 4) * 0.4, Math.sin((i * Math.PI) / 4) * 0.4, 0]}>
+						<cylinderGeometry args={[0.08, 0.08, 0.15, 8]} rotation={[Math.PI / 2, 0, 0]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.4} />
+					</mesh>
+				))}
+				{/* Center hub */}
+				<mesh>
+					<cylinderGeometry args={[0.15, 0.15, 0.2, 16]} rotation={[Math.PI / 2, 0, 0]} />
+					<meshStandardMaterial color={color} transparent opacity={0.4} />
+				</mesh>
+			</group>
+		</Float>
+	)
+}
+
+/**
+ * Curly Braces - Code symbol { }
+ */
+function CurlyBraces({ position, color = "#34d399" }: { position: [number, number, number], color?: string }) {
+	const groupRef = useRef<THREE.Group>(null)
+	const scroll = useScroll()
+
+	useFrame((state) => {
+		if (!groupRef.current) return
+		const t = state.clock.elapsedTime
+		groupRef.current.rotation.y = Math.sin(t * 0.3) * 0.3
+		groupRef.current.rotation.x = scroll.progress * 0.5
+	})
+
+	return (
+		<Float speed={0.4} rotationIntensity={0.3} floatIntensity={0.3}>
+			<group ref={groupRef} position={position} scale={0.3}>
+				{/* Left brace { */}
+				<group position={[-0.4, 0, 0]}>
+					<mesh position={[0.1, 0.4, 0]} rotation={[0, 0, 0.3]}>
+						<boxGeometry args={[0.08, 0.5, 0.08]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
+					</mesh>
+					<mesh position={[-0.05, 0, 0]}>
+						<boxGeometry args={[0.15, 0.08, 0.08]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
+					</mesh>
+					<mesh position={[0.1, -0.4, 0]} rotation={[0, 0, -0.3]}>
+						<boxGeometry args={[0.08, 0.5, 0.08]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
+					</mesh>
+				</group>
+				{/* Right brace } */}
+				<group position={[0.4, 0, 0]}>
+					<mesh position={[-0.1, 0.4, 0]} rotation={[0, 0, -0.3]}>
+						<boxGeometry args={[0.08, 0.5, 0.08]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
+					</mesh>
+					<mesh position={[0.05, 0, 0]}>
+						<boxGeometry args={[0.15, 0.08, 0.08]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
+					</mesh>
+					<mesh position={[-0.1, -0.4, 0]} rotation={[0, 0, 0.3]}>
+						<boxGeometry args={[0.08, 0.5, 0.08]} />
+						<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
+					</mesh>
+				</group>
+			</group>
+		</Float>
 	)
 }
 
@@ -504,28 +781,45 @@ export default function Scene() {
 			{/* Mouse follower - interactive element */}
 			<MouseFollower />
 
-			{/* Floating wireframe shapes - dispersed */}
-			<FloatingShapes />
+			{/* === MEANINGFUL 3D ICONS === */}
 
-			{/* Code brackets - scattered */}
-			<FloatingBrackets position={[-7, 3, -3]} color="#f472b6" scale={1} />
-			<FloatingBrackets position={[8, -4, -4]} color="#60a5fa" scale={0.8} />
-			<FloatingBrackets position={[-6, -8, -3]} color="#34d399" scale={1.2} />
-			<FloatingBrackets position={[6, 10, -4]} color="#a78bfa" scale={0.9} />
+			{/* Iron Man / JARVIS References */}
+			<ArcReactor position={[-7, 5, -4]} scale={0.6} />
+			<ArcReactor position={[8, -6, -5]} scale={0.4} />
+			<HexagonHUD position={[9, 3, -4]} color="#60a5fa" />
+			<HexagonHUD position={[-8, -4, -3]} color="#3b82f6" />
 
-			{/* Animated rings - spread across viewport */}
-			<PulsingRing position={[-8, -2, -5]} />
-			<PulsingRing position={[9, 4, -6]} />
-			<PulsingRing position={[-5, 7, -5]} />
-			<PulsingRing position={[5, -8, -6]} />
-			<PulsingRing position={[0, -12, -5]} />
+			{/* Photography & Videography */}
+			<Camera3D position={[7, 7, -3]} color="#f59e0b" />
+			<Camera3D position={[-6, -7, -4]} color="#fbbf24" />
+			<FilmReel position={[-9, 2, -4]} color="#ec4899" />
+			<FilmReel position={[6, -9, -3]} color="#f472b6" />
 
-			{/* Orbiting particles - distributed */}
-			<OrbitingParticles center={[9, -6, -4]} count={25} radius={2} />
-			<OrbitingParticles center={[-8, 5, -5]} count={20} radius={1.8} />
-			<OrbitingParticles center={[6, 8, -4]} count={18} radius={1.5} />
-			<OrbitingParticles center={[-7, -7, -5]} count={22} radius={2.2} />
-			<OrbitingParticles center={[0, 10, -4]} count={15} radius={1.2} />
+			{/* Coding & Tech */}
+			<Terminal3D position={[-7, 8, -4]} color="#22c55e" />
+			<Terminal3D position={[8, -3, -3]} color="#34d399" />
+			<CurlyBraces position={[9, 8, -4]} color="#34d399" />
+			<CurlyBraces position={[-8, -9, -3]} color="#22c55e" />
+			<FloatingBrackets position={[-5, 3, -3]} color="#f472b6" scale={0.8} />
+			<FloatingBrackets position={[6, 0, -4]} color="#60a5fa" scale={0.7} />
+
+			{/* AI & Neural */}
+			<AIBrain position={[0, 9, -4]} color="#06b6d4" />
+			<AIBrain position={[-9, -1, -5]} color="#0891b2" />
+
+			{/* Music - Your passion */}
+			<MusicNote3D position={[-6, 0, -3]} color="#a855f7" />
+			<MusicNote3D position={[7, 5, -4]} color="#8b5cf6" />
+
+			{/* Comedy/Joy - You like to laugh! */}
+			<ComedyStar position={[0, -8, -3]} color="#fbbf24" />
+			<ComedyStar position={[-4, 6, -4]} color="#f59e0b" />
+			<ComedyStar position={[5, -5, -5]} color="#facc15" />
+
+			{/* Orbiting particles around key elements */}
+			<OrbitingParticles center={[-7, 5, -4]} count={15} radius={1.5} />
+			<OrbitingParticles center={[8, -6, -5]} count={12} radius={1.2} />
+			<OrbitingParticles center={[0, 9, -4]} count={18} radius={1.8} />
 
 			<Preload all />
 		</Canvas>
