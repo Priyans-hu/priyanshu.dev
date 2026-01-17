@@ -352,61 +352,44 @@ const playJarvisSound = () => {
 }
 
 /**
- * Logo Click Easter Egg - Triple click on PG logo activates Iron Man mode
+ * Easter Egg Hint - Shows a subtle hint about hidden features
  */
-function LogoClickEasterEgg() {
-	const [clickCount, setClickCount] = useState(0)
-	const [showIronMan, setShowIronMan] = useState(false)
-	const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+function EasterEggHint() {
+	const [showHint, setShowHint] = useState(false)
+	const [dismissed, setDismissed] = useState(false)
 
 	useEffect(() => {
-		const handleClick = (e: MouseEvent) => {
-			const target = e.target as HTMLElement
-			// Check if clicking on the PG logo
-			if (target.closest('a[href="/"]') && target.textContent?.includes('PG')) {
-				setClickCount(prev => {
-					const newCount = prev + 1
-					if (newCount >= 3) {
-						setShowIronMan(true)
-						playJarvisSound()
-						setTimeout(() => setShowIronMan(false), 5000)
-						return 0
-					}
-					return newCount
-				})
+		// Show hint after 30 seconds on page
+		const timer = setTimeout(() => {
+			if (!dismissed) setShowHint(true)
+		}, 30000)
 
-				// Reset count after 1 second of no clicks
-				if (timeoutRef.current) clearTimeout(timeoutRef.current)
-				timeoutRef.current = setTimeout(() => setClickCount(0), 1000)
-			}
-		}
+		return () => clearTimeout(timer)
+	}, [dismissed])
 
-		document.addEventListener('click', handleClick)
-		return () => {
-			document.removeEventListener('click', handleClick)
-			if (timeoutRef.current) clearTimeout(timeoutRef.current)
-		}
-	}, [])
-
-	if (!showIronMan) return null
+	if (!showHint || dismissed) return null
 
 	return (
-		<div className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center">
-			<div className="text-center animate-in zoom-in duration-500">
-				{/* Arc Reactor Animation */}
-				<div className="relative w-32 h-32 mx-auto mb-6">
-					<div className="absolute inset-0 rounded-full bg-blue-500/30 animate-ping" />
-					<div className="absolute inset-2 rounded-full bg-blue-500/20 animate-pulse" />
-					<div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-400 to-cyan-300 flex items-center justify-center">
-						<div className="w-12 h-12 rounded-full bg-white/90 shadow-lg shadow-blue-400/50" />
+		<div className="fixed bottom-24 left-8 z-40 animate-in fade-in slide-in-from-left-4 duration-500">
+			<div className="bg-card/80 backdrop-blur-sm border border-border rounded-xl px-4 py-3 shadow-lg max-w-xs">
+				<div className="flex items-start gap-3">
+					<span className="text-2xl">🤫</span>
+					<div className="flex-1">
+						<p className="text-sm text-foreground font-medium">Psst... Secret!</p>
+						<p className="text-xs text-muted-foreground mt-1">
+							Try typing <span className="text-primary font-mono">"jarvis"</span> anywhere on this page...
+						</p>
 					</div>
-					{/* Rotating ring */}
-					<div className="absolute inset-0 rounded-full border-2 border-blue-400/50 animate-spin" style={{ animationDuration: '3s' }}>
-						<div className="absolute top-0 left-1/2 w-2 h-2 -ml-1 -mt-1 rounded-full bg-blue-400" />
-					</div>
+					<button
+						onClick={() => setDismissed(true)}
+						className="text-muted-foreground hover:text-foreground transition-colors"
+						aria-label="Dismiss hint"
+					>
+						<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
 				</div>
-				<p className="text-2xl font-bold text-blue-400">Iron Man Mode</p>
-				<p className="text-muted-foreground mt-2">"I am Iron Man." - Tony Stark</p>
 			</div>
 		</div>
 	)
@@ -421,7 +404,7 @@ export default function Enhancements() {
 			<EasterEgg />
 			<CarEasterEgg />
 			<JarvisEasterEgg />
-			<LogoClickEasterEgg />
+			<EasterEggHint />
 			<BackToTop />
 			<SoundEffects />
 			<SmoothScrollHandler />
