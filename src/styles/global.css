@@ -117,55 +117,55 @@
 }
 
 /* ============================================
-   JOY THEME - Sunset Aurora Palette
-   Warm, inviting colors proven to create positive impressions
+   JARVIS THEME - Iron Man HUD Inspired
+   Futuristic blue/cyan interface like Tony Stark's AI
    ============================================ */
 .joy {
-  /* Deep navy with subtle warmth */
-  --background: oklch(0.18 0.03 260);
-  --foreground: oklch(0.95 0.01 60);
+  /* Deep dark blue-black background */
+  --background: oklch(0.12 0.02 240);
+  --foreground: oklch(0.92 0.02 200);
 
-  /* Cards with subtle purple tint */
-  --card: oklch(0.22 0.04 270);
-  --card-foreground: oklch(0.95 0.01 60);
-  --popover: oklch(0.22 0.04 270);
-  --popover-foreground: oklch(0.95 0.01 60);
+  /* Cards with cyan tint */
+  --card: oklch(0.16 0.03 220);
+  --card-foreground: oklch(0.92 0.02 200);
+  --popover: oklch(0.16 0.03 220);
+  --popover-foreground: oklch(0.92 0.02 200);
 
-  /* Coral pink primary - warm and energetic */
-  --primary: oklch(0.72 0.18 15);
-  --primary-foreground: oklch(0.98 0 0);
+  /* Arc reactor cyan primary */
+  --primary: oklch(0.75 0.15 200);
+  --primary-foreground: oklch(0.1 0.02 220);
 
-  /* Soft lavender secondary */
-  --secondary: oklch(0.35 0.06 280);
-  --secondary-foreground: oklch(0.9 0.02 60);
+  /* Darker blue secondary */
+  --secondary: oklch(0.22 0.04 220);
+  --secondary-foreground: oklch(0.85 0.05 200);
 
   /* Muted tones */
-  --muted: oklch(0.28 0.04 270);
-  --muted-foreground: oklch(0.7 0.03 60);
+  --muted: oklch(0.2 0.03 220);
+  --muted-foreground: oklch(0.6 0.04 200);
 
-  /* Golden amber accent */
-  --accent: oklch(0.78 0.15 75);
-  --accent-foreground: oklch(0.2 0.02 60);
+  /* Gold accent like Iron Man suit */
+  --accent: oklch(0.75 0.14 85);
+  --accent-foreground: oklch(0.15 0.02 85);
 
-  --destructive: oklch(0.65 0.2 25);
+  --destructive: oklch(0.6 0.22 25);
 
-  /* Borders with warm glow */
-  --border: oklch(0.72 0.12 15 / 25%);
-  --input: oklch(0.72 0.12 15 / 15%);
-  --ring: oklch(0.78 0.15 75);
+  /* Borders with cyan glow */
+  --border: oklch(0.75 0.12 200 / 25%);
+  --input: oklch(0.75 0.12 200 / 15%);
+  --ring: oklch(0.75 0.15 200);
 
-  /* Chart colors - sunset spectrum */
-  --chart-1: oklch(0.72 0.18 15);   /* Coral */
-  --chart-2: oklch(0.78 0.15 75);   /* Amber */
-  --chart-3: oklch(0.7 0.15 330);   /* Magenta */
-  --chart-4: oklch(0.65 0.15 280);  /* Purple */
-  --chart-5: oklch(0.7 0.12 200);   /* Teal */
+  /* Chart colors - JARVIS HUD spectrum */
+  --chart-1: oklch(0.75 0.15 200);  /* Cyan */
+  --chart-2: oklch(0.7 0.12 220);   /* Blue */
+  --chart-3: oklch(0.75 0.14 85);   /* Gold */
+  --chart-4: oklch(0.65 0.1 180);   /* Teal */
+  --chart-5: oklch(0.7 0.08 240);   /* Steel blue */
 
-  /* Joy accent colors - sunset aurora */
-  --arc-reactor: oklch(0.7 0.12 200);   /* Soft teal */
-  --stark-gold: oklch(0.78 0.15 75);    /* Warm amber */
-  --stark-red: oklch(0.72 0.18 15);     /* Coral pink */
-  --hud-glow: oklch(0.7 0.15 330);      /* Soft magenta */
+  /* JARVIS accent colors */
+  --arc-reactor: oklch(0.78 0.18 200);  /* Bright cyan */
+  --stark-gold: oklch(0.75 0.14 85);    /* Iron Man gold */
+  --stark-red: oklch(0.6 0.22 25);      /* Subtle red */
+  --hud-glow: oklch(0.7 0.15 200);      /* HUD cyan glow */
 }
 
 @layer base {
@@ -204,22 +204,26 @@
 /* Glassmorphism card effect */
 .glass-card {
   background: oklch(from var(--card) l c h / 70%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid oklch(from var(--border) l c h / 50%);
-  box-shadow: 0 4px 30px oklch(0 0 0 / 10%);
+  box-shadow: 0 8px 32px oklch(0 0 0 / 10%);
 }
 
 .dark .glass-card {
-  background: oklch(from var(--card) l c h / 60%);
-  border: 1px solid oklch(1 0 0 / 10%);
-  box-shadow: 0 4px 30px oklch(0 0 0 / 20%);
+  background: oklch(from var(--card) l c h / 50%);
+  border: 1px solid oklch(1 0 0 / 8%);
+  box-shadow: 0 8px 32px oklch(0 0 0 / 25%);
 }
 
+/* JARVIS theme glass card - cyan glow effect */
 .joy .glass-card {
-  background: oklch(from var(--card) l c h / 65%);
-  border: 1px solid oklch(from var(--primary) l c h / 20%);
-  box-shadow: 0 4px 30px oklch(from var(--primary) l c h / 10%);
+  background: oklch(from var(--card) l c h / 40%);
+  border: 1px solid oklch(0.75 0.15 200 / 30%);
+  box-shadow:
+    0 8px 32px oklch(0 0 0 / 30%),
+    0 0 1px oklch(0.75 0.15 200 / 50%),
+    inset 0 0 20px oklch(0.75 0.15 200 / 5%);
 }
 
 /* Car drive animation for easter egg */
