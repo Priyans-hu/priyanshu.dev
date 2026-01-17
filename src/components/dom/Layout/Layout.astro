@@ -40,7 +40,7 @@ const {
 } = Astro.props as Props
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<!-- SEO. -->
 		<SEO
@@ -86,118 +86,28 @@ const {
 		</script>
 
 		<!-- Favicons. -->
-		<link
-			rel="apple-touch-icon"
-			sizes="57x57"
-			href="/favicons/favicon-57x57.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="60x60"
-			href="/favicons/favicon-60x60.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="72x72"
-			href="/favicons/favicon-72x72.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="76x76"
-			href="/favicons/favicon-76x76.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="114x114"
-			href="/favicons/favicon-114x114.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="120x120"
-			href="/favicons/favicon-120x120.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="144x144"
-			href="/favicons/favicon-144x144.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="152x152"
-			href="/favicons/favicon-152x152.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="/favicons/favicon-180x180.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="/favicons/favicon-16x16.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="/favicons/favicon-32x32.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="96x96"
-			href="/favicons/favicon-96x96.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="192x192"
-			href="/favicons/favicon-192x192.png"
-		/>
-		<link
-			rel="shortcut icon"
-			type="image/x-icon"
-			href="/favicons/favicon.ico"
-		/>
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicons/favicon-180x180.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+		<link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico" />
 		<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico" />
-		<meta name="msapplication-TileColor" content="#30E130" />
-		<meta
-			name="msapplication-TileImage"
-			content="/favicons/favicon-144x144.png"
-		/>
-		<meta name="msapplication-config" content="/browserconfig.xml" />
-		<link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg" />
-		<meta name="theme-color" content="#30E130" />
+		<meta name="theme-color" content="#0ea5e9" />
 
 		<!-- Service worker registration. -->
-
 		<script is:inline src="/registerSW.js"></script>
 		<link rel="manifest" href="/manifest.webmanifest" />
 	</head>
-	<body class="min-h-screen flex flex-col w-full overflow-x-hidden">
-		<main id="main" class="antialiased text-page bg-light dark:text-slate-300 tracking-tight dark:bg-dark">
-      <div id="domContent" class="z-0 fixed inset-0 overflow-y-scroll">
-        <div id="wrapper" class="absolute overflow-x-hidden min-w-[100%] min-h-[100%] top-0">
-          <div data-lenis-prevent id="content" class="relative min-h-[100vh]">
-            <slot />
-          </div>
-        </div>
-      </div>
-      <BasicScripts />
-      <div class="-z-[1] fixed top-0 left-0 min-w-[100%] min-h-[100%]">
-        <Scene client:only="react" />
-      </div>
-      <style is:global>
-        img {
-          content-visibility: auto;
-        }
-      </style>
-    </main>
+	<body class="min-h-screen bg-background text-foreground antialiased">
+		<!-- 3D Background Scene -->
+		<div class="fixed inset-0 -z-10 pointer-events-none">
+			<Scene client:only="react" />
+		</div>
 
-		<script>
-			// This is a hack to get vite-plugin-pwa to generate a sw.js file.
-			// Do not remove this script tag.
-		</script>
+		<!-- Main Content - Normal scrolling -->
+		<div class="relative z-0">
+			<slot />
+		</div>
+
+		<BasicScripts />
 	</body>
 </html>
