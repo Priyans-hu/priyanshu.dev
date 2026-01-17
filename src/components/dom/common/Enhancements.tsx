@@ -376,22 +376,31 @@ function LogoEasterEgg() {
 }
 
 /**
- * Easter Egg Hint - Shows a subtle hint about hidden features
+ * Easter Egg Hint - Shows a subtle hint about hidden features, auto-hides after 10 seconds
  */
 function EasterEggHint() {
 	const [showHint, setShowHint] = useState(false)
-	const [dismissed, setDismissed] = useState(false)
 
 	useEffect(() => {
-		// Show hint after 45 seconds on page
-		const timer = setTimeout(() => {
-			if (!dismissed) setShowHint(true)
-		}, 45000)
+		// Show hint after 30 seconds on page
+		const showTimer = setTimeout(() => {
+			setShowHint(true)
+		}, 30000)
 
-		return () => clearTimeout(timer)
-	}, [dismissed])
+		return () => clearTimeout(showTimer)
+	}, [])
 
-	if (!showHint || dismissed) return null
+	useEffect(() => {
+		// Auto-hide after 10 seconds once shown
+		if (showHint) {
+			const hideTimer = setTimeout(() => {
+				setShowHint(false)
+			}, 10000)
+			return () => clearTimeout(hideTimer)
+		}
+	}, [showHint])
+
+	if (!showHint) return null
 
 	return (
 		<div className="fixed bottom-24 left-8 z-40 animate-in fade-in slide-in-from-left-4 duration-500">
@@ -404,15 +413,6 @@ function EasterEggHint() {
 							Try <span className="text-primary font-medium">triple-clicking</span> the PG logo or <span className="text-primary font-medium">double-clicking</span> anywhere...
 						</p>
 					</div>
-					<button
-						onClick={() => setDismissed(true)}
-						className="text-muted-foreground hover:text-foreground transition-colors"
-						aria-label="Dismiss hint"
-					>
-						<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-						</svg>
-					</button>
 				</div>
 			</div>
 		</div>

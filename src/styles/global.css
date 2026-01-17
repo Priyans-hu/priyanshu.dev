@@ -193,12 +193,33 @@
   text-shadow: 0 0 10px var(--hud-glow);
 }
 
-/* Gradient text effect */
+/* Gradient text effect - subtle blue accent */
 .gradient-text {
-  background: linear-gradient(135deg, var(--arc-reactor), var(--stark-gold), var(--stark-red));
+  background: linear-gradient(135deg, var(--arc-reactor), var(--primary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Glassmorphism card effect */
+.glass-card {
+  background: oklch(from var(--card) l c h / 70%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid oklch(from var(--border) l c h / 50%);
+  box-shadow: 0 4px 30px oklch(0 0 0 / 10%);
+}
+
+.dark .glass-card {
+  background: oklch(from var(--card) l c h / 60%);
+  border: 1px solid oklch(1 0 0 / 10%);
+  box-shadow: 0 4px 30px oklch(0 0 0 / 20%);
+}
+
+.joy .glass-card {
+  background: oklch(from var(--card) l c h / 65%);
+  border: 1px solid oklch(from var(--primary) l c h / 20%);
+  box-shadow: 0 4px 30px oklch(from var(--primary) l c h / 10%);
 }
 
 /* Car drive animation for easter egg */
