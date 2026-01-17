@@ -17,3 +17,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Build cache
+.astro/
+
+# Package manager lock (using npm)
+pnpm-lock.yaml
