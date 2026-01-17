@@ -11,39 +11,43 @@ import { useRef, useMemo } from 'react'
 extend(THREE as any)
 
 /**
- * Floating geometric shapes that respond to mouse
+ * Floating geometric shapes dispersed across the viewport
  */
 function FloatingShapes() {
 	const groupRef = useRef<THREE.Group>(null)
 	const { pointer } = useThree()
 
-	// Create random positions for shapes
+	// Pre-defined positions spread across corners and edges
 	const shapes = useMemo(() => {
-		return Array.from({ length: 8 }, (_, i) => ({
-			position: [
-				(Math.random() - 0.5) * 12,
-				(Math.random() - 0.5) * 8,
-				(Math.random() - 0.5) * 6 - 2
-			] as [number, number, number],
+		const positions: [number, number, number][] = [
+			[-8, 4, -3],    // Top left
+			[8, 5, -4],     // Top right
+			[-9, -3, -2],   // Mid left
+			[9, -2, -3],    // Mid right
+			[-7, -8, -4],   // Bottom left
+			[7, -7, -3],    // Bottom right
+			[-6, 8, -5],    // Far top left
+			[6, 9, -4],     // Far top right
+			[0, -10, -3],   // Bottom center
+			[-10, 0, -4],   // Far left
+			[10, 1, -3],    // Far right
+			[0, 12, -5],    // Top center
+		]
+		return positions.map((position, i) => ({
+			position,
 			rotation: Math.random() * Math.PI,
-			scale: 0.15 + Math.random() * 0.25,
+			scale: 0.2 + Math.random() * 0.35,
 			speed: 0.2 + Math.random() * 0.3,
-			type: i % 4 // 0: box, 1: octahedron, 2: tetrahedron, 3: torus
+			type: i % 4
 		}))
 	}, [])
 
 	useFrame((state) => {
 		if (!groupRef.current) return
-		// Subtle rotation based on mouse
 		groupRef.current.rotation.y = THREE.MathUtils.lerp(
 			groupRef.current.rotation.y,
-			pointer.x * 0.1,
-			0.02
-		)
-		groupRef.current.rotation.x = THREE.MathUtils.lerp(
-			groupRef.current.rotation.x,
-			pointer.y * 0.05,
-			0.02
+			pointer.x * 0.05,
+			0.01
 		)
 	})
 
@@ -65,7 +69,7 @@ function FloatingShapes() {
 						<meshStandardMaterial
 							color={['#60a5fa', '#a78bfa', '#f472b6', '#34d399'][shape.type]}
 							transparent
-							opacity={0.15}
+							opacity={0.18}
 							wireframe
 						/>
 					</mesh>
@@ -152,34 +156,37 @@ function OrbitingParticles({ center, count = 20, radius = 2 }: {
 }
 
 /**
- * Moving gradient sphere - positioned to not collide with content
+ * Moving gradient sphere - multiple instances dispersed
  */
-function GradientSphere() {
+function GradientSphere({ position, color, size = 1.5 }: {
+	position: [number, number, number]
+	color: string
+	size?: number
+}) {
 	const meshRef = useRef<THREE.Mesh>(null)
 	const { pointer } = useThree()
+	const offset = useMemo(() => Math.random() * Math.PI * 2, [])
 
 	useFrame((state) => {
 		if (!meshRef.current) return
-		const t = state.clock.elapsedTime
+		const t = state.clock.elapsedTime + offset
 
-		// Gentle floating motion
-		meshRef.current.position.y = -2 + Math.sin(t * 0.5) * 0.3
-		meshRef.current.position.x = 4 + Math.cos(t * 0.3) * 0.2
+		meshRef.current.position.y = position[1] + Math.sin(t * 0.5) * 0.4
+		meshRef.current.position.x = position[0] + Math.cos(t * 0.3) * 0.3
 
-		// Respond to mouse
-		meshRef.current.rotation.y = t * 0.1 + pointer.x * 0.2
-		meshRef.current.rotation.x = Math.sin(t * 0.2) * 0.1 + pointer.y * 0.1
+		meshRef.current.rotation.y = t * 0.1 + pointer.x * 0.1
+		meshRef.current.rotation.x = Math.sin(t * 0.2) * 0.1
 	})
 
 	return (
-		<mesh ref={meshRef} position={[4, -2, -3]}>
-			<sphereGeometry args={[1.5, 32, 32]} />
+		<mesh ref={meshRef} position={position}>
+			<sphereGeometry args={[size, 32, 32]} />
 			<meshStandardMaterial
-				color="#3b82f6"
-				emissive="#1d4ed8"
+				color={color}
+				emissive={color}
 				emissiveIntensity={0.2}
 				transparent
-				opacity={0.3}
+				opacity={0.25}
 				roughness={0.2}
 				metalness={0.8}
 			/>
@@ -190,37 +197,42 @@ function GradientSphere() {
 /**
  * Floating code brackets decoration
  */
-function FloatingBrackets() {
+function FloatingBrackets({ position, color = "#f472b6", scale = 1 }: {
+	position: [number, number, number]
+	color?: string
+	scale?: number
+}) {
 	const groupRef = useRef<THREE.Group>(null)
+	const offset = useMemo(() => Math.random() * Math.PI * 2, [])
 
 	useFrame((state) => {
 		if (!groupRef.current) return
-		const t = state.clock.elapsedTime
-		groupRef.current.rotation.y = Math.sin(t * 0.2) * 0.1
-		groupRef.current.position.y = Math.sin(t * 0.5) * 0.2
+		const t = state.clock.elapsedTime + offset
+		groupRef.current.rotation.y = Math.sin(t * 0.2) * 0.15
+		groupRef.current.rotation.z = Math.sin(t * 0.3) * 0.1
 	})
 
 	return (
 		<Float speed={1} rotationIntensity={0.2} floatIntensity={0.3}>
-			<group ref={groupRef} position={[-5, 1, -4]}>
+			<group ref={groupRef} position={position} scale={scale}>
 				{/* Left bracket < */}
 				<mesh position={[-0.5, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
 					<boxGeometry args={[0.08, 1, 0.08]} />
-					<meshStandardMaterial color="#f472b6" emissive="#f472b6" emissiveIntensity={0.3} transparent opacity={0.5} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
 				</mesh>
 				<mesh position={[-0.5, 0, 0]} rotation={[0, 0, -Math.PI / 4]}>
 					<boxGeometry args={[0.08, 1, 0.08]} />
-					<meshStandardMaterial color="#f472b6" emissive="#f472b6" emissiveIntensity={0.3} transparent opacity={0.5} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
 				</mesh>
 
 				{/* Right bracket > */}
 				<mesh position={[0.5, 0, 0]} rotation={[0, 0, -Math.PI / 4]}>
 					<boxGeometry args={[0.08, 1, 0.08]} />
-					<meshStandardMaterial color="#f472b6" emissive="#f472b6" emissiveIntensity={0.3} transparent opacity={0.5} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
 				</mesh>
 				<mesh position={[0.5, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
 					<boxGeometry args={[0.08, 1, 0.08]} />
-					<meshStandardMaterial color="#f472b6" emissive="#f472b6" emissiveIntensity={0.3} transparent opacity={0.5} />
+					<meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.3} transparent opacity={0.5} />
 				</mesh>
 			</group>
 		</Float>
@@ -268,31 +280,48 @@ export default function Scene() {
 			{/* Ambient and directional lighting */}
 			<ambientLight intensity={0.4} />
 			<directionalLight position={[5, 5, 5]} intensity={0.5} />
-			<pointLight position={[-5, -5, -5]} intensity={0.3} color="#a78bfa" />
+			<pointLight position={[-10, -10, -5]} intensity={0.3} color="#a78bfa" />
+			<pointLight position={[10, 10, -5]} intensity={0.2} color="#60a5fa" />
 
-			{/* Background stars */}
+			{/* Background stars - spread wider */}
 			<Stars
-				radius={50}
-				depth={50}
-				count={1000}
-				factor={2}
+				radius={80}
+				depth={80}
+				count={1500}
+				factor={3}
 				saturation={0}
 				fade
 				speed={0.5}
 			/>
 
-			{/* Main 3D elements - positioned away from center content */}
-			<GradientSphere />
+			{/* Floating wireframe shapes - dispersed */}
 			<FloatingShapes />
-			<FloatingBrackets />
 
-			{/* Animated rings */}
-			<PulsingRing position={[-4, -3, -5]} />
-			<PulsingRing position={[5, 3, -6]} />
+			{/* Gradient spheres - corners and edges */}
+			<GradientSphere position={[8, 6, -5]} color="#3b82f6" size={1.8} />
+			<GradientSphere position={[-9, -5, -4]} color="#8b5cf6" size={1.5} />
+			<GradientSphere position={[7, -9, -6]} color="#06b6d4" size={1.2} />
+			<GradientSphere position={[-8, 8, -5]} color="#ec4899" size={1.4} />
 
-			{/* Orbiting particles */}
-			<OrbitingParticles center={[4, -2, -3]} count={30} radius={2.5} />
-			<OrbitingParticles center={[-4, 2, -4]} count={20} radius={1.5} />
+			{/* Code brackets - scattered */}
+			<FloatingBrackets position={[-7, 3, -3]} color="#f472b6" scale={1} />
+			<FloatingBrackets position={[8, -4, -4]} color="#60a5fa" scale={0.8} />
+			<FloatingBrackets position={[-6, -8, -3]} color="#34d399" scale={1.2} />
+			<FloatingBrackets position={[6, 10, -4]} color="#a78bfa" scale={0.9} />
+
+			{/* Animated rings - spread across viewport */}
+			<PulsingRing position={[-8, -2, -5]} />
+			<PulsingRing position={[9, 4, -6]} />
+			<PulsingRing position={[-5, 7, -5]} />
+			<PulsingRing position={[5, -8, -6]} />
+			<PulsingRing position={[0, -12, -5]} />
+
+			{/* Orbiting particles - distributed */}
+			<OrbitingParticles center={[9, -6, -4]} count={25} radius={2} />
+			<OrbitingParticles center={[-8, 5, -5]} count={20} radius={1.8} />
+			<OrbitingParticles center={[6, 8, -4]} count={18} radius={1.5} />
+			<OrbitingParticles center={[-7, -7, -5]} count={22} radius={2.2} />
+			<OrbitingParticles center={[0, 10, -4]} count={15} radius={1.2} />
 
 			<Preload all />
 		</Canvas>
