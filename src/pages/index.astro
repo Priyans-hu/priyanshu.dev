@@ -52,7 +52,7 @@ import ThemeToggle from "~/components/dom/common/ThemeToggle";
 
 				<!-- Tech stack badges -->
 				<div class="flex flex-wrap justify-center gap-3 pt-8">
-					{["React", "Next.js", "Node.js", "TypeScript", "Tailwind", "Three.js"].map(tech => (
+					{["React", "Go", "TypeScript", "Node.js", "AWS", "Python"].map(tech => (
 						<span class="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm">
 							{tech}
 						</span>
@@ -432,7 +432,7 @@ import ThemeToggle from "~/components/dom/common/ThemeToggle";
 					<div class="p-6 rounded-2xl bg-card border border-border">
 						<h3 class="text-xl font-semibold mb-4">Languages</h3>
 						<div class="flex flex-wrap gap-2">
-							{["Java", "JavaScript", "TypeScript", "Python", "C/C++"].map(skill => (
+							{["Go", "TypeScript", "JavaScript", "Python", "Java", "C/C++"].map(skill => (
 								<span class="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm">
 									{skill}
 								</span>
@@ -465,7 +465,18 @@ import ThemeToggle from "~/components/dom/common/ThemeToggle";
 					<div class="p-6 rounded-2xl bg-card border border-border">
 						<h3 class="text-xl font-semibold mb-4">Tools & DevOps</h3>
 						<div class="flex flex-wrap gap-2">
-							{["Git", "Docker", "CI/CD", "AWS", "Agile"].map(skill => (
+							{["Git", "Docker", "AWS", "CI/CD", "Microservices"].map(skill => (
+								<span class="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm">
+									{skill}
+								</span>
+							))}
+						</div>
+					</div>
+
+					<div class="p-6 rounded-2xl bg-card border border-border md:col-span-2">
+						<h3 class="text-xl font-semibold mb-4">AI & Modern Tools</h3>
+						<div class="flex flex-wrap gap-2">
+							{["Claude", "ChatGPT", "Cursor", "GitHub Copilot", "V0", "Prompt Engineering"].map(skill => (
 								<span class="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm">
 									{skill}
 								</span>
