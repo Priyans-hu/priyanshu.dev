@@ -60,27 +60,37 @@ import ThemeToggle from "~/components/dom/common/ThemeToggle";
 			</div>
 		</section>
 
-		<!-- Work Section -->
+		<!-- Work Section - Bento Grid Style -->
 		<section id="work" class="py-32 px-6">
 			<div class="max-w-6xl mx-auto">
 				<h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
 					Featured <span class="gradient-text">Projects</span>
 				</h2>
 
-				<div class="grid md:grid-cols-2 gap-8">
-					<!-- Ledger -->
-					<article class="group relative rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all duration-300">
-						<div class="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-							<span class="text-6xl opacity-50">📊</span>
-						</div>
-						<div class="p-6 space-y-4">
-							<h3 class="text-2xl font-semibold group-hover:text-primary transition-colors">Ledger</h3>
-							<p class="text-muted-foreground">
-								Comprehensive expense management application with customer tracking, invoice generation, and profit analytics.
-							</p>
-							<div class="flex flex-wrap gap-2">
-								{["React", "Node.js", "MongoDB", "MySQL"].map(tech => (
-									<span class="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-xs">
+				<!-- Bento Grid Layout -->
+				<div class="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-6">
+
+					<!-- Ledger - Large Featured Card -->
+					<article class="md:col-span-4 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-500/10 via-card to-card border border-border/50 hover:border-emerald-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/10">
+						<div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative p-8 h-full flex flex-col justify-between min-h-[320px]">
+							<div>
+								<div class="flex items-center gap-3 mb-4">
+									<div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
+										<svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+										</svg>
+									</div>
+									<span class="text-xs font-medium text-emerald-500 uppercase tracking-wider">Featured</span>
+								</div>
+								<h3 class="text-3xl font-bold mb-3 group-hover:text-emerald-400 transition-colors">Ledger</h3>
+								<p class="text-muted-foreground text-lg leading-relaxed max-w-lg">
+									Comprehensive expense management with customer tracking, GST invoice generation, and real-time profit analytics dashboard.
+								</p>
+							</div>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{["React", "Node.js", "MongoDB", "MySQL", "Tailwind"].map(tech => (
+									<span class="px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-medium border border-emerald-500/20">
 										{tech}
 									</span>
 								))}
@@ -88,19 +98,22 @@ import ThemeToggle from "~/components/dom/common/ThemeToggle";
 						</div>
 					</article>
 
-					<!-- UrbanKicks -->
-					<article class="group relative rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all duration-300">
-						<div class="aspect-video bg-gradient-to-br from-stark-red/20 to-stark-gold/20 flex items-center justify-center">
-							<span class="text-6xl opacity-50">👟</span>
-						</div>
-						<div class="p-6 space-y-4">
-							<h3 class="text-2xl font-semibold group-hover:text-primary transition-colors">UrbanKicks</h3>
-							<p class="text-muted-foreground">
-								E-commerce platform for urban footwear. Browse, purchase, and review the latest trends.
+					<!-- UrbanKicks - Tall Card -->
+					<article class="md:col-span-2 md:row-span-2 group relative rounded-3xl overflow-hidden bg-gradient-to-b from-orange-500/10 via-card to-card border border-border/50 hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10">
+						<div class="absolute inset-0 bg-gradient-to-b from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative p-6 h-full flex flex-col min-h-[400px] md:min-h-0">
+							<div class="w-14 h-14 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-6">
+								<svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+								</svg>
+							</div>
+							<h3 class="text-2xl font-bold mb-3 group-hover:text-orange-400 transition-colors">UrbanKicks</h3>
+							<p class="text-muted-foreground flex-1">
+								E-commerce platform for urban footwear with product browsing, secure checkout, and customer reviews.
 							</p>
-							<div class="flex flex-wrap gap-2">
-								{["React", "Node.js", "MongoDB", "Tailwind"].map(tech => (
-									<span class="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-xs">
+							<div class="flex flex-wrap gap-2 mt-6">
+								{["React", "Node.js", "MongoDB"].map(tech => (
+									<span class="px-3 py-1.5 rounded-full bg-orange-500/10 text-orange-400 text-xs font-medium border border-orange-500/20">
 										{tech}
 									</span>
 								))}
@@ -108,19 +121,24 @@ import ThemeToggle from "~/components/dom/common/ThemeToggle";
 						</div>
 					</article>
 
-					<!-- StockFlow -->
-					<article class="group relative rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all duration-300">
-						<div class="aspect-video bg-gradient-to-br from-arc-reactor/20 to-hud-glow/20 flex items-center justify-center">
-							<span class="text-6xl opacity-50">📦</span>
-						</div>
-						<div class="p-6 space-y-4">
-							<h3 class="text-2xl font-semibold group-hover:text-primary transition-colors">StockFlow</h3>
-							<p class="text-muted-foreground">
-								Real-time inventory management system with order tracking and detailed analytics.
-							</p>
-							<div class="flex flex-wrap gap-2">
-								{["React", "Node.js", "MongoDB", "Express"].map(tech => (
-									<span class="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-xs">
+					<!-- StockFlow - Medium Card -->
+					<article class="md:col-span-2 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-blue-500/10 via-card to-card border border-border/50 hover:border-blue-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10">
+						<div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative p-6 min-h-[200px] flex flex-col justify-between">
+							<div>
+								<div class="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-4">
+									<svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+									</svg>
+								</div>
+								<h3 class="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">StockFlow</h3>
+								<p class="text-muted-foreground text-sm">
+									Real-time inventory management with order tracking and analytics.
+								</p>
+							</div>
+							<div class="flex flex-wrap gap-1.5 mt-4">
+								{["React", "Express", "MongoDB"].map(tech => (
+									<span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-medium border border-blue-500/20">
 										{tech}
 									</span>
 								))}
@@ -128,25 +146,31 @@ import ThemeToggle from "~/components/dom/common/ThemeToggle";
 						</div>
 					</article>
 
-					<!-- PasteBox -->
-					<article class="group relative rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all duration-300">
-						<div class="aspect-video bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
-							<span class="text-6xl opacity-50">📝</span>
-						</div>
-						<div class="p-6 space-y-4">
-							<h3 class="text-2xl font-semibold group-hover:text-primary transition-colors">PasteBox</h3>
-							<p class="text-muted-foreground">
-								Simple yet powerful tool for storing and sharing text snippets and code securely.
-							</p>
-							<div class="flex flex-wrap gap-2">
-								{["React", "Node.js", "MongoDB", "Tailwind"].map(tech => (
-									<span class="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-xs">
+					<!-- PasteBox - Medium Card -->
+					<article class="md:col-span-2 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-purple-500/10 via-card to-card border border-border/50 hover:border-purple-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10">
+						<div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative p-6 min-h-[200px] flex flex-col justify-between">
+							<div>
+								<div class="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center mb-4">
+									<svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+									</svg>
+								</div>
+								<h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">PasteBox</h3>
+								<p class="text-muted-foreground text-sm">
+									Share code snippets and text securely with syntax highlighting.
+								</p>
+							</div>
+							<div class="flex flex-wrap gap-1.5 mt-4">
+								{["React", "Node.js", "Tailwind"].map(tech => (
+									<span class="px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-medium border border-purple-500/20">
 										{tech}
 									</span>
 								))}
 							</div>
 						</div>
 					</article>
+
 				</div>
 			</div>
 		</section>
