@@ -6,9 +6,150 @@ import { isMobile } from 'react-device-detect'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Vector3 } from 'three'
 import { extend } from "@react-three/fiber"
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect, useState } from 'react'
 
 extend(THREE as any)
+
+/**
+ * Glowing orb that follows mouse cursor via global event listener
+ */
+function MouseFollower() {
+	const meshRef = useRef<THREE.Mesh>(null)
+	const glowRef = useRef<THREE.Mesh>(null)
+	const trailRef = useRef<THREE.Points>(null)
+	const { viewport, camera } = useThree()
+
+	// Track mouse position globally
+	const mousePos = useRef({ x: 0, y: 0 })
+
+	useEffect(() => {
+		const handleMouseMove = (e: MouseEvent) => {
+			// Convert to normalized device coordinates (-1 to 1)
+			mousePos.current.x = (e.clientX / window.innerWidth) * 2 - 1
+			mousePos.current.y = -(e.clientY / window.innerHeight) * 2 + 1
+		}
+
+		window.addEventListener('mousemove', handleMouseMove)
+		return () => window.removeEventListener('mousemove', handleMouseMove)
+	}, [])
+
+	// Store trail positions
+	const trailPositions = useMemo(() => new Float32Array(30 * 3), [])
+
+	useFrame((state) => {
+		if (!meshRef.current) return
+
+		// Convert mouse to world coordinates
+		const targetX = (mousePos.current.x * viewport.width) / 2
+		const targetY = (mousePos.current.y * viewport.height) / 2
+
+		// Smooth follow with lerp
+		meshRef.current.position.x = THREE.MathUtils.lerp(
+			meshRef.current.position.x,
+			targetX,
+			0.08
+		)
+		meshRef.current.position.y = THREE.MathUtils.lerp(
+			meshRef.current.position.y,
+			targetY,
+			0.08
+		)
+
+		// Pulsing scale
+		const t = state.clock.elapsedTime
+		const scale = 1 + Math.sin(t * 3) * 0.15
+		meshRef.current.scale.setScalar(scale)
+
+		// Rotate based on movement
+		meshRef.current.rotation.x += 0.02
+		meshRef.current.rotation.y += 0.01
+
+		// Glow follows with slight delay
+		if (glowRef.current) {
+			glowRef.current.position.x = THREE.MathUtils.lerp(
+				glowRef.current.position.x,
+				targetX,
+				0.05
+			)
+			glowRef.current.position.y = THREE.MathUtils.lerp(
+				glowRef.current.position.y,
+				targetY,
+				0.05
+			)
+			glowRef.current.scale.setScalar(scale * 1.5)
+		}
+
+		// Update trail
+		if (trailRef.current) {
+			const positions = trailRef.current.geometry.attributes.position.array as Float32Array
+
+			// Shift all positions back
+			for (let i = positions.length - 3; i >= 3; i -= 3) {
+				positions[i] = positions[i - 3]
+				positions[i + 1] = positions[i - 2]
+				positions[i + 2] = positions[i - 1]
+			}
+
+			// Add new position at front
+			positions[0] = meshRef.current.position.x
+			positions[1] = meshRef.current.position.y
+			positions[2] = meshRef.current.position.z
+
+			trailRef.current.geometry.attributes.position.needsUpdate = true
+		}
+	})
+
+	// Don't render on mobile
+	if (isMobile) return null
+
+	return (
+		<group>
+			{/* Trail particles */}
+			<points ref={trailRef}>
+				<bufferGeometry>
+					<bufferAttribute
+						attach="attributes-position"
+						count={30}
+						array={trailPositions}
+						itemSize={3}
+					/>
+				</bufferGeometry>
+				<pointsMaterial
+					size={0.08}
+					color="#60a5fa"
+					transparent
+					opacity={0.4}
+					sizeAttenuation
+				/>
+			</points>
+
+			{/* Outer glow */}
+			<mesh ref={glowRef} position={[0, 0, 2]}>
+				<sphereGeometry args={[0.4, 16, 16]} />
+				<meshStandardMaterial
+					color="#60a5fa"
+					emissive="#60a5fa"
+					emissiveIntensity={0.3}
+					transparent
+					opacity={0.15}
+				/>
+			</mesh>
+
+			{/* Main orb */}
+			<mesh ref={meshRef} position={[0, 0, 2]}>
+				<icosahedronGeometry args={[0.2, 1]} />
+				<meshStandardMaterial
+					color="#60a5fa"
+					emissive="#3b82f6"
+					emissiveIntensity={0.8}
+					transparent
+					opacity={0.7}
+					wireframe
+				/>
+			</mesh>
+		</group>
+	)
+}
 
 /**
  * Floating geometric shapes dispersed across the viewport
@@ -293,6 +434,9 @@ export default function Scene() {
 				fade
 				speed={0.5}
 			/>
+
+			{/* Mouse follower - interactive element */}
+			<MouseFollower />
 
 			{/* Floating wireframe shapes - dispersed */}
 			<FloatingShapes />
