@@ -69,9 +69,7 @@ const {
 				}
 			}}
 			twitter={{
-				card: seoConfig.twitter.card,
-				site: seoConfig.twitter.site,
-				creator: seoConfig.twitter.creator
+				card: seoConfig.twitter.card
 			}}
 		/>
 
@@ -83,6 +81,15 @@ const {
 		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 		<link rel="canonical" href={seoConfig.baseURL} />
 
+		<!-- Search Engine Verification -->
+		<meta name="google-site-verification" content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M" />
+
+		<!-- Geo targeting for US/International -->
+		<meta name="geo.region" content="US" />
+		<meta name="geo.placename" content="United States" />
+		<meta name="language" content="English" />
+		<meta name="target" content="all" />
+
 		<!-- JSON-LD Structured Data for Person -->
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
@@ -93,17 +100,23 @@ const {
 			"sameAs": [
 				"https://github.com/Priyans-hu",
 				"https://linkedin.com/in/priyans-hu",
-				"https://twitter.com/priyans_hu"
+				"https://instagram.com/shotbypriyanshu"
 			],
 			"jobTitle": "Software Development Engineer",
 			"worksFor": {
 				"@type": "Organization",
-				"name": "Plivo"
+				"name": "Plivo",
+				"url": "https://www.plivo.com"
 			},
 			"alumniOf": {
 				"@type": "CollegeOrUniversity",
-				"name": "Guru Gobind Singh Indraprastha University"
+				"name": "Chitkara University, Punjab"
 			},
+			"nationality": {
+				"@type": "Country",
+				"name": "India"
+			},
+			"seeks": "Remote software development opportunities",
 			"knowsAbout": [
 				"React.js",
 				"Node.js",

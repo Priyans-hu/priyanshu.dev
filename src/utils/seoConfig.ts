@@ -18,9 +18,12 @@ export const seoConfig = {
 	},
 	siteName: "Priyanshu Garg | Portfolio",
 	twitter: {
-		card: "summary_large_image",
-		site: "@priyans_hu",
-		creator: "@priyans_hu"
+		card: "summary_large_image"
+	},
+	social: {
+		github: "https://github.com/Priyans-hu",
+		linkedin: "https://linkedin.com/in/priyans-hu",
+		instagram: "https://instagram.com/shotbypriyanshu"
 	},
 	keywords: [
 		"Priyanshu Garg",
