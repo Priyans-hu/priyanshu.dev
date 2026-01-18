@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  # Skip Next.js plugin - this is an Astro project
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
