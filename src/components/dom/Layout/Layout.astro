@@ -49,30 +49,86 @@ const {
 			description={seoConfig.description || description}
 			noindex={disableIndexing}
 			nofollow={disableIndexing}
+			canonical={seoConfig.baseURL}
 			openGraph={{
 				basic: {
 					title: ogTitle || title,
 					type: "website",
-					image: seoConfig.image.url || image.url
+					image: seoConfig.baseURL + seoConfig.image.url,
+					url: seoConfig.baseURL
 				},
 				image: {
 					width: seoConfig.image.width,
 					height: seoConfig.image.height,
-					alt: seoConfig.image.alt || image.alt
+					alt: seoConfig.image.alt || image?.alt
 				},
 				optional: {
 					siteName: seoConfig.siteName,
-					description: seoConfig.description || description
+					description: seoConfig.description || description,
+					locale: "en_US"
 				}
 			}}
 			twitter={{
-				card: seoConfig.twitter.card
+				card: seoConfig.twitter.card,
+				site: seoConfig.twitter.site,
+				creator: seoConfig.twitter.creator
 			}}
 		/>
 
 		<!-- Global meta tags. -->
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Priyanshu Garg" />
+		<meta name="keywords" content={seoConfig.keywords?.join(", ")} />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<link rel="canonical" href={seoConfig.baseURL} />
+
+		<!-- JSON-LD Structured Data for Person -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Priyanshu Garg",
+			"url": "https://priyans-hu.netlify.app",
+			"image": "https://priyans-hu.netlify.app/og-image.png",
+			"sameAs": [
+				"https://github.com/Priyans-hu",
+				"https://linkedin.com/in/priyans-hu",
+				"https://twitter.com/priyans_hu"
+			],
+			"jobTitle": "Software Development Engineer",
+			"worksFor": {
+				"@type": "Organization",
+				"name": "Plivo"
+			},
+			"alumniOf": {
+				"@type": "CollegeOrUniversity",
+				"name": "Guru Gobind Singh Indraprastha University"
+			},
+			"knowsAbout": [
+				"React.js",
+				"Node.js",
+				"Go",
+				"TypeScript",
+				"PostgreSQL",
+				"AWS",
+				"Docker",
+				"Full Stack Development"
+			],
+			"description": "Full Stack Developer specializing in React, Node.js, Go, and cloud technologies. Currently working at Plivo building scalable web applications."
+		})} />
+
+		<!-- JSON-LD Structured Data for WebSite -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "Priyanshu Garg Portfolio",
+			"url": "https://priyans-hu.netlify.app",
+			"description": "Full Stack Developer portfolio showcasing projects and skills",
+			"author": {
+				"@type": "Person",
+				"name": "Priyanshu Garg"
+			}
+		})} />
 
 		<!-- JARVIS theme initialization -->
 		<script is:inline>

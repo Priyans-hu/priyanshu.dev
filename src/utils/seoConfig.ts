@@ -6,20 +6,36 @@ import type { ManifestOptions } from "vite-plugin-pwa"
  * Defines the default SEO configuration for the portfolio.
  */
 export const seoConfig = {
-	baseURL: "https://priyanshugarg.dev",
+	baseURL: "https://priyans-hu.netlify.app",
 	description:
-		"Priyanshu Garg - Web Developer & Tech Enthusiast. Building functional and beautiful digital experiences with React, Next.js, Node.js, and modern web technologies.",
+		"Priyanshu Garg - Full Stack Developer at Plivo. Specializing in React, Node.js, Go, TypeScript, and cloud technologies. Building scalable web applications and open-source projects.",
 	type: "website",
 	image: {
 		url: "/og-image.png",
-		alt: "Priyanshu Garg - Web Developer Portfolio",
+		alt: "Priyanshu Garg - Full Stack Developer Portfolio",
 		width: 1200,
 		height: 630
 	},
-	siteName: "Priyanshu Garg",
+	siteName: "Priyanshu Garg | Portfolio",
 	twitter: {
-		card: "summary_large_image"
-	}
+		card: "summary_large_image",
+		site: "@priyans_hu",
+		creator: "@priyans_hu"
+	},
+	keywords: [
+		"Priyanshu Garg",
+		"Full Stack Developer",
+		"Software Engineer",
+		"React Developer",
+		"Node.js Developer",
+		"Go Developer",
+		"Plivo",
+		"Web Developer India",
+		"Portfolio",
+		"TypeScript",
+		"AWS",
+		"PostgreSQL"
+	]
 }
 
 /**
