@@ -1,0 +1,100 @@
+# Priyanshu Garg - Portfolio
+
+> Full Stack Developer building scalable web applications
+
+## About
+
+Priyanshu Garg is a Full Stack Developer currently working as SDE-1 at Plivo (since August 2024). Based in India, he specializes in building modern web applications using React, Node.js, Go, and cloud technologies.
+
+## Current Role
+
+**Software Development Engineer (SDE-1) at Plivo**
+- Building cloud communication platform features
+- Working with Go, React, TypeScript, AWS
+- Focus on scalable backend systems
+
+## Technical Skills
+
+### Languages
+- Go (Golang)
+- JavaScript / TypeScript
+- Python
+- SQL
+
+### Frontend
+- React.js
+- Next.js
+- Tailwind CSS
+- Material-UI
+
+### Backend
+- Node.js / Express.js
+- Go / Gin
+- RESTful APIs
+- GraphQL
+
+### Databases
+- PostgreSQL
+- MongoDB
+- Redis
+
+### Cloud & DevOps
+- AWS (EC2, S3, Lambda, RDS)
+- Docker
+- GitHub Actions
+- CI/CD pipelines
+
+## Featured Projects
+
+### Ledger
+Shop management system for Indian small businesses
+- Tech: React, Node.js, PostgreSQL, Docker
+- Features: Customer management, transaction tracking, GST invoicing
+- GitHub: https://github.com/Priyans-hu/ledger
+
+### StockFlow
+Inventory management application
+- Tech: React, Node.js, MongoDB
+- Features: Stock tracking, order management, analytics
+
+### PasteBox
+Code sharing and snippet management tool
+- Tech: Next.js, TypeScript
+- Features: Syntax highlighting, expiring links, sharing
+
+### UrbanKicks
+E-commerce platform for sneakers
+- Tech: React, Node.js, Stripe
+- Features: Product catalog, cart, payments
+
+## Education
+
+Bachelor of Technology (B.Tech)
+Guru Gobind Singh Indraprastha University, Delhi
+2020 - 2024
+
+## Contact
+
+- Website: https://priyans-hu.netlify.app
+- Email: mailpriyanshugarg@gmail.com
+- GitHub: https://github.com/Priyans-hu
+- LinkedIn: https://linkedin.com/in/priyans-hu
+- Instagram: https://instagram.com/shotbypriyanshu (photography)
+
+## Availability
+
+Open to remote opportunities, especially with US-based companies.
+Available for freelance projects, consulting, and full-time roles.
+
+## Interests
+
+Beyond coding, Priyanshu enjoys:
+- Music production
+- Photography
+- Video editing
+- Open source contribution
+
+## Availability
+
+Open to interesting projects, collaborations, and opportunities.
+Best reached via email or LinkedIn.

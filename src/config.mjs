@@ -1,18 +1,18 @@
 import defaultImage from './assets/img/default.png';
 
 const CONFIG = {
-  name: 'AstroWind',
+  name: 'Priyanshu Garg',
 
-  origin: 'https://astrowind.vercel.app',
+  origin: 'https://priyans-hu.netlify.app',
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'AstroWind — Free template for create a website with Astro + Tailwind CSS',
+  title: 'Priyanshu Garg | Full Stack Developer Portfolio',
   description:
-    '🚀 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.',
+    'Full Stack Developer specializing in React, Node.js, Go, and cloud technologies. Building scalable web applications at Plivo. View my projects and get in touch.',
   defaultImage: defaultImage,
 
-  defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  defaultTheme: 'dark', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
   language: 'en',
   textDirection: 'ltr',
