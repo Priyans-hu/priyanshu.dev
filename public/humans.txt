@@ -1,7 +1,7 @@
 /* TEAM */
 Developer: Priyanshu Garg
 Role: Full Stack Developer
-Site: https://priyanshu.dev
+Site: https://priyans-hu.netlify.app
 GitHub: https://github.com/Priyans-hu
 LinkedIn: https://linkedin.com/in/priyans-hu
 Location: India
