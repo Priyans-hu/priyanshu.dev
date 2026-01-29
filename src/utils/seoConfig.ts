@@ -32,12 +32,18 @@ export const seoConfig = {
 		"React Developer",
 		"Node.js Developer",
 		"Go Developer",
+		"Swift Developer",
 		"Plivo",
+		"Argus",
+		"TokenMeter",
 		"Web Developer India",
 		"Portfolio",
 		"TypeScript",
 		"AWS",
-		"PostgreSQL"
+		"PostgreSQL",
+		"Open Source",
+		"CLI Tools",
+		"AI Developer Tools"
 	]
 }
 

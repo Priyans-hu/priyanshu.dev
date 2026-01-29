@@ -1,77 +1,86 @@
-# Priyanshu Garg - Portfolio
+# Priyanshu Garg
 
-> Full Stack Developer building scalable web applications
+> Full Stack Developer | SDE-1 at Plivo | Open Source Builder
 
 ## About
 
-Priyanshu Garg is a Full Stack Developer currently working as SDE-1 at Plivo (since August 2024). Based in India, he specializes in building modern web applications using React, Node.js, Go, and cloud technologies.
+Priyanshu Garg is a Full Stack Developer currently working as SDE-1 at Plivo (since August 2025). Based in India, he builds scalable web applications and developer tools using Go, React, TypeScript, Node.js, and cloud technologies. He is passionate about open source, developer experience, and AI-assisted development.
 
 ## Current Role
 
-**Software Development Engineer (SDE-1) at Plivo**
-- Building cloud communication platform features
-- Working with Go, React, TypeScript, AWS
-- Focus on scalable backend systems
+**Software Development Engineer (SDE-1) at Plivo** (Aug 2025 - Present)
+- Building cloud communications platform powering SMS, Voice APIs, and AI agents for 190+ countries
+- Working on scalable systems serving 1B+ API requests monthly
+- Tech stack: Go, React, TypeScript, AWS, PostgreSQL
+
+**Previous: Software Engineer Intern at STGI Technologies** (Jul 2024 - May 2025)
+- Contributed to fintech solutions modernizing financial institutions
+- Worked on cloud-native lending platforms and banking software
 
 ## Technical Skills
 
 ### Languages
-- Go (Golang)
-- JavaScript / TypeScript
-- Python
-- SQL
+Go, TypeScript, JavaScript, Python, Java, C/C++, Swift, SQL
 
 ### Frontend
-- React.js
-- Next.js
-- Tailwind CSS
-- Material-UI
+React.js, Next.js, Tailwind CSS, Framer Motion, Three.js, SwiftUI
 
 ### Backend
-- Node.js / Express.js
-- Go / Gin
-- RESTful APIs
-- GraphQL
+Node.js, Express.js, Go/Cobra, RESTful APIs, GraphQL, gRPC
 
 ### Databases
-- PostgreSQL
-- MongoDB
-- Redis
+PostgreSQL, MongoDB, MySQL, Redis
 
 ### Cloud & DevOps
-- AWS (EC2, S3, Lambda, RDS)
-- Docker
-- GitHub Actions
-- CI/CD pipelines
+AWS (EC2, S3, Lambda, RDS), Docker, GitHub Actions, CI/CD, Microservices
+
+### AI & Tools
+Claude Code, Cursor, GitHub Copilot, Ollama, Prompt Engineering
 
 ## Featured Projects
 
+### Argus
+The all-seeing code analyzer — CLI tool that scans codebases and generates AI-optimized context files for Claude, Cursor, Copilot, and more.
+- Tech: Go, Cobra, AST parsing, Ollama, TypeScript
+- Features: Multi-format output, monorepo per-workspace generation, Ollama AI enrichment, VS Code extension, parallel analysis, incremental scanning
+- GitHub: https://github.com/Priyans-hu/argus
+- Install: `go install github.com/Priyans-hu/argus/cmd/argus@latest`
+
+### TokenMeter
+macOS menu bar app for Claude Code token usage visualization.
+- Tech: Swift, SwiftUI, macOS
+- Features: Real-time token tracking, cost monitoring, session analytics
+- GitHub: https://github.com/Priyans-hu/tokenmeter
+
 ### Ledger
-Shop management system for Indian small businesses
+Shop management system for Indian small businesses.
 - Tech: React, Node.js, PostgreSQL, Docker
-- Features: Customer management, transaction tracking, GST invoicing
+- Features: Customer management, transaction tracking, GST invoicing, profit analytics
 - GitHub: https://github.com/Priyans-hu/ledger
 
-### StockFlow
-Inventory management application
+### UrbanKicks
+E-commerce platform for urban footwear.
 - Tech: React, Node.js, MongoDB
-- Features: Stock tracking, order management, analytics
+- Features: Product catalog, secure checkout, customer reviews
+- GitHub: https://github.com/Priyans-hu/UrbanKicks
+
+### StockFlow
+Real-time inventory management system.
+- Tech: React, Express, MongoDB
+- Features: Stock tracking, order management, analytics dashboard
+- GitHub: https://github.com/Priyans-hu/StockFlow
 
 ### PasteBox
-Code sharing and snippet management tool
-- Tech: Next.js, TypeScript
-- Features: Syntax highlighting, expiring links, sharing
-
-### UrbanKicks
-E-commerce platform for sneakers
-- Tech: React, Node.js, Stripe
-- Features: Product catalog, cart, payments
+Code snippet sharing platform.
+- Tech: React, Node.js, Tailwind CSS
+- Features: Syntax highlighting, shareable links
+- GitHub: https://github.com/Priyans-hu/PasteBox
 
 ## Education
 
-Bachelor of Technology (B.Tech)
-Guru Gobind Singh Indraprastha University, Delhi
-2020 - 2024
+B.E. Computer Science
+Chitkara University, Punjab
+2021 - 2025
 
 ## Contact
 
@@ -81,18 +90,9 @@ Guru Gobind Singh Indraprastha University, Delhi
 - LinkedIn: https://linkedin.com/in/priyans-hu
 - Instagram: https://instagram.com/shotbypriyanshu (photography)
 
-## Availability
-
-Open to remote opportunities, especially with US-based companies.
-Available for freelance projects, consulting, and full-time roles.
-
 ## Interests
 
-Beyond coding, Priyanshu enjoys:
-- Music production
-- Photography
-- Video editing
-- Open source contribution
+Beyond coding: music, photography, video editing, open source contributions.
 
 ## Availability
 

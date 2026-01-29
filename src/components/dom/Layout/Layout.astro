@@ -116,18 +116,20 @@ const {
 				"@type": "Country",
 				"name": "India"
 			},
-			"seeks": "Remote software development opportunities",
 			"knowsAbout": [
 				"React.js",
 				"Node.js",
 				"Go",
 				"TypeScript",
+				"Swift",
 				"PostgreSQL",
 				"AWS",
 				"Docker",
-				"Full Stack Development"
+				"Full Stack Development",
+				"CLI Tools",
+				"Open Source"
 			],
-			"description": "Full Stack Developer specializing in React, Node.js, Go, and cloud technologies. Currently working at Plivo building scalable web applications."
+			"description": "Full Stack Developer specializing in Go, React, TypeScript, and cloud technologies. Currently SDE-1 at Plivo. Creator of Argus (AI code analyzer) and TokenMeter (macOS token tracker)."
 		})} />
 
 		<!-- JSON-LD Structured Data for WebSite -->
@@ -136,11 +138,55 @@ const {
 			"@type": "WebSite",
 			"name": "Priyanshu Garg Portfolio",
 			"url": "https://priyans-hu.netlify.app",
-			"description": "Full Stack Developer portfolio showcasing projects and skills",
+			"description": "Full Stack Developer portfolio — projects, experience, and open source work by Priyanshu Garg",
 			"author": {
 				"@type": "Person",
 				"name": "Priyanshu Garg"
 			}
+		})} />
+
+		<!-- JSON-LD Structured Data for Projects (ItemList) -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			"name": "Open Source Projects by Priyanshu Garg",
+			"itemListElement": [
+				{
+					"@type": "SoftwareApplication",
+					"position": 1,
+					"name": "Argus",
+					"description": "CLI tool that scans codebases and generates AI-optimized context files for Claude, Cursor, Copilot, and more. Includes monorepo support, Ollama AI enrichment, and a VS Code extension.",
+					"url": "https://github.com/Priyans-hu/argus",
+					"applicationCategory": "DeveloperApplication",
+					"operatingSystem": "Linux, macOS, Windows",
+					"programmingLanguage": ["Go", "TypeScript"],
+					"author": { "@type": "Person", "name": "Priyanshu Garg" },
+					"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+				},
+				{
+					"@type": "SoftwareApplication",
+					"position": 2,
+					"name": "TokenMeter",
+					"description": "macOS menu bar app for Claude Code token usage visualization. Track costs, monitor sessions, and stay on top of AI spending.",
+					"url": "https://github.com/Priyans-hu/tokenmeter",
+					"applicationCategory": "DeveloperApplication",
+					"operatingSystem": "macOS",
+					"programmingLanguage": "Swift",
+					"author": { "@type": "Person", "name": "Priyanshu Garg" },
+					"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+				},
+				{
+					"@type": "SoftwareApplication",
+					"position": 3,
+					"name": "Ledger",
+					"description": "Shop management system with customer tracking, GST invoicing, and profit analytics for Indian small businesses.",
+					"url": "https://github.com/Priyans-hu/ledger",
+					"applicationCategory": "BusinessApplication",
+					"programmingLanguage": ["React", "Node.js"],
+					"author": { "@type": "Person", "name": "Priyanshu Garg" },
+					"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+				}
+			]
 		})} />
 
 		<!-- JARVIS theme initialization -->
@@ -154,6 +200,9 @@ const {
 				document.documentElement.classList.add('joy');
 			}
 		</script>
+
+		<!-- AI discoverability -->
+		<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable profile" />
 
 		<!-- Favicons. -->
 		<link rel="apple-touch-icon" sizes="180x180" href="/favicons/favicon-180x180.png" />

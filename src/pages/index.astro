@@ -88,34 +88,35 @@ const navLinks = [
 				<!-- Bento Grid Layout -->
 				<div class="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-6">
 
-					<!-- Ledger - Large Featured Card -->
-					<article class="md:col-span-4 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-500/10 via-card to-card border border-border/50 hover:border-emerald-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/10">
-						<div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+					<!-- Argus - Large Featured Card -->
+					<article class="md:col-span-4 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-500/10 via-card to-card border border-border/50 hover:border-cyan-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/10">
+						<div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 						<div class="relative p-6 sm:p-8 h-full flex flex-col justify-between min-h-[280px] sm:min-h-[320px]">
 							<div>
 								<div class="flex items-center justify-between mb-4">
 									<div class="flex items-center gap-3">
-										<div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
-											<svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+										<div class="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center">
+											<svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
 											</svg>
 										</div>
-										<span class="text-xs font-medium text-emerald-500 uppercase tracking-wider">Featured</span>
+										<span class="text-xs font-medium text-cyan-500 uppercase tracking-wider">Featured</span>
 									</div>
-									<a href="https://github.com/Priyans-hu/Ledger" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 transition-colors" title="View on GitHub">
-										<svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+									<a href="https://github.com/Priyans-hu/argus" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors" title="View on GitHub">
+										<svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
 											<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
 										</svg>
 									</a>
 								</div>
-								<h3 class="text-2xl sm:text-3xl font-bold mb-3 group-hover:text-emerald-400 transition-colors">Ledger</h3>
+								<h3 class="text-2xl sm:text-3xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">Argus</h3>
 								<p class="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-lg">
-									Comprehensive expense management with customer tracking, GST invoice generation, and real-time profit analytics dashboard.
+									The all-seeing code analyzer. CLI tool that scans codebases and generates AI-optimized context files for Claude, Cursor, Copilot, and more. Includes monorepo support, Ollama AI enrichment, and a VS Code extension.
 								</p>
 							</div>
 							<div class="flex flex-wrap gap-2 mt-6">
-								{["React", "Node.js", "MongoDB", "MySQL", "Tailwind"].map(tech => (
-									<span class="px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-medium border border-emerald-500/20">
+								{["Go", "Cobra", "AST", "Ollama", "TypeScript"].map(tech => (
+									<span class="px-3 py-1.5 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-medium border border-cyan-500/20">
 										{tech}
 									</span>
 								))}
@@ -146,6 +147,38 @@ const navLinks = [
 							<div class="flex flex-wrap gap-2 mt-6">
 								{["React", "Node.js", "MongoDB"].map(tech => (
 									<span class="px-3 py-1.5 rounded-full bg-orange-500/10 text-orange-400 text-xs font-medium border border-orange-500/20">
+										{tech}
+									</span>
+								))}
+							</div>
+						</div>
+					</article>
+
+					<!-- Ledger - Medium Card -->
+					<article class="md:col-span-2 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-500/10 via-card to-card border border-border/50 hover:border-emerald-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/10">
+						<div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative p-6 min-h-[200px] flex flex-col justify-between">
+							<div>
+								<div class="flex items-start justify-between mb-4">
+									<div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
+										<svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+										</svg>
+									</div>
+									<a href="https://github.com/Priyans-hu/Ledger" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 transition-colors" title="View on GitHub">
+										<svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+										</svg>
+									</a>
+								</div>
+								<h3 class="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">Ledger</h3>
+								<p class="text-muted-foreground text-sm">
+									Shop management with customer tracking, GST invoicing, and profit analytics.
+								</p>
+							</div>
+							<div class="flex flex-wrap gap-1.5 mt-4">
+								{["React", "Node.js", "PostgreSQL"].map(tech => (
+									<span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-medium border border-emerald-500/20">
 										{tech}
 									</span>
 								))}
@@ -185,31 +218,65 @@ const navLinks = [
 						</div>
 					</article>
 
-					<!-- PasteBox - Medium Card -->
-					<article class="md:col-span-2 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-purple-500/10 via-card to-card border border-border/50 hover:border-purple-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10">
+					<!-- TokenMeter - Wide Card -->
+					<article class="md:col-span-4 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-purple-500/10 via-card to-card border border-border/50 hover:border-purple-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10">
 						<div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-						<div class="relative p-6 min-h-[200px] flex flex-col justify-between">
+						<div class="relative p-6 sm:p-8 min-h-[200px] flex flex-col justify-between">
 							<div>
 								<div class="flex items-start justify-between mb-4">
-									<div class="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center">
-										<svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-										</svg>
+									<div class="flex items-center gap-3">
+										<div class="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center">
+											<svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+											</svg>
+										</div>
 									</div>
-									<a href="https://github.com/Priyans-hu/PasteBox" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 transition-colors" title="View on GitHub">
-										<svg class="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+									<a href="https://github.com/Priyans-hu/tokenmeter" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 transition-colors" title="View on GitHub">
+										<svg class="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
 											<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
 										</svg>
 									</a>
 								</div>
-								<h3 class="text-xl font-bold mb-2 group-hover:text-purple-400 transition-colors">PasteBox</h3>
+								<h3 class="text-2xl sm:text-3xl font-bold mb-3 group-hover:text-purple-400 transition-colors">TokenMeter</h3>
+								<p class="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-lg">
+									macOS menu bar app for visualizing Claude Code token usage. Track costs, monitor sessions, and stay on top of your AI spending.
+								</p>
+							</div>
+							<div class="flex flex-wrap gap-2 mt-6">
+								{["Swift", "SwiftUI", "macOS"].map(tech => (
+									<span class="px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-400 text-xs font-medium border border-purple-500/20">
+										{tech}
+									</span>
+								))}
+							</div>
+						</div>
+					</article>
+
+					<!-- PasteBox - Small Card -->
+					<article class="md:col-span-2 group relative rounded-3xl overflow-hidden bg-gradient-to-br from-pink-500/10 via-card to-card border border-border/50 hover:border-pink-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-pink-500/10">
+						<div class="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+						<div class="relative p-6 min-h-[200px] flex flex-col justify-between">
+							<div>
+								<div class="flex items-start justify-between mb-4">
+									<div class="w-12 h-12 rounded-2xl bg-pink-500/20 flex items-center justify-center">
+										<svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+										</svg>
+									</div>
+									<a href="https://github.com/Priyans-hu/PasteBox" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-pink-500/10 hover:bg-pink-500/20 transition-colors" title="View on GitHub">
+										<svg class="w-4 h-4 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+											<path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+										</svg>
+									</a>
+								</div>
+								<h3 class="text-xl font-bold mb-2 group-hover:text-pink-400 transition-colors">PasteBox</h3>
 								<p class="text-muted-foreground text-sm">
-									Share code snippets and text securely with syntax highlighting.
+									Code snippet sharing with syntax highlighting.
 								</p>
 							</div>
 							<div class="flex flex-wrap gap-1.5 mt-4">
 								{["React", "Node.js", "Tailwind"].map(tech => (
-									<span class="px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-medium border border-purple-500/20">
+									<span class="px-2.5 py-1 rounded-full bg-pink-500/10 text-pink-400 text-xs font-medium border border-pink-500/20">
 										{tech}
 									</span>
 								))}
@@ -580,7 +647,7 @@ const navLinks = [
 		<!-- Footer -->
 		<footer class="py-8 px-4 sm:px-6 border-t border-border">
 			<div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-muted-foreground text-sm">
-				<p>© 2026 Priyanshu Garg. All rights reserved.</p>
+				<p>&copy; 2026 Priyanshu Garg. All rights reserved.</p>
 				<p>Vibe coded with <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Claude</a></p>
 			</div>
 		</footer>

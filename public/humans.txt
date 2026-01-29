@@ -1,7 +1,17 @@
-This Astro starter was built by Shaun Chander!
+/* TEAM */
+Developer: Priyanshu Garg
+Role: Full Stack Developer
+Site: https://priyans-hu.netlify.app
+GitHub: https://github.com/Priyans-hu
+LinkedIn: https://linkedin.com/in/priyans-hu
+Location: India
 
-GitHub: https://github.com/shaunchander
-Twitter: https://twitter.com/shaunchander
-Personal: https://shaunchander.me
+/* THANKS */
+Astro starter by Shaun Chander — https://github.com/shaunchander
 
-Checkout the https://humanstxt.org/ protocol to see how you should format your humans.txt file!
+/* SITE */
+Standards: HTML5, CSS3, ES6+
+Framework: Astro, React, Three.js
+Styling: Tailwind CSS
+Hosting: Netlify, GitHub Pages
+Language: English

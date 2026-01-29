@@ -1,0 +1,158 @@
+# Priyanshu Garg - Full Profile
+
+> Full Stack Developer | SDE-1 at Plivo | Open Source Builder
+> Website: https://priyans-hu.netlify.app
+> GitHub: https://github.com/Priyans-hu
+
+## Summary
+
+Priyanshu Garg is a Full Stack Developer working as SDE-1 at Plivo, a cloud communications company serving 190+ countries with SMS, Voice APIs, and AI agents. He builds scalable backend systems in Go and frontend applications with React/TypeScript. Previously interned at STGI Technologies building fintech solutions. He is an active open source contributor, building developer tools like Argus (code analyzer for AI assistants) and TokenMeter (macOS menu bar app for token tracking).
+
+---
+
+## Work Experience
+
+### SDE-1 Fullstack — Plivo (Aug 2025 - Present)
+Building cloud communications platform powering SMS, Voice APIs, and AI agents for 190+ countries. Working on scalable systems serving 1B+ API requests monthly for clients like Uber, IBM, and Discord.
+
+**Tech:** Go, React, TypeScript, AWS, PostgreSQL
+
+### Software Engineer Intern — STGI Technologies (Jul 2024 - May 2025)
+Contributed to fintech solutions modernizing financial institutions. Worked on cloud-native lending platforms and banking software handling complex regulatory workflows.
+
+**Tech:** React, Node.js, Cloud, Fintech
+
+---
+
+## Technical Expertise
+
+### Languages
+| Language | Proficiency |
+|----------|------------|
+| Go (Golang) | Primary backend language, CLI tools, microservices |
+| TypeScript | Frontend & full-stack development |
+| JavaScript | Web development, Node.js backend |
+| Swift | macOS native app development |
+| Python | Scripting, automation |
+| Java | Enterprise applications |
+| C/C++ | Systems programming fundamentals |
+| SQL | Database queries, PostgreSQL, MySQL |
+
+### Frontend Technologies
+React.js, Next.js, Tailwind CSS, Framer Motion, Three.js, SwiftUI, Material-UI, Astro
+
+### Backend Technologies
+Node.js, Express.js, Go/Cobra CLI, Gin, RESTful APIs, GraphQL, gRPC, WebSockets
+
+### Databases
+PostgreSQL, MongoDB, MySQL, Redis
+
+### Cloud & Infrastructure
+AWS (EC2, S3, Lambda, RDS, CloudFront), Docker, GitHub Actions, CI/CD pipelines, Microservices architecture, GoReleaser
+
+### AI & Developer Tools
+Claude Code, Cursor, GitHub Copilot, Ollama (local LLM), AST parsing, Prompt Engineering, V0
+
+---
+
+## Open Source Projects
+
+### Argus — The All-Seeing Code Analyzer
+**Repository:** https://github.com/Priyans-hu/argus
+**Install:** `go install github.com/Priyans-hu/argus/cmd/argus@latest`
+**Stars:** Open source, actively maintained
+
+A CLI tool that scans codebases and generates AI-optimized context files for Claude, Cursor, Copilot, and more. It analyzes project structure, detects frameworks, identifies coding patterns, and produces structured documentation that helps AI assistants understand your codebase.
+
+**Key Features:**
+- Multi-format output: Claude (CLAUDE.md), Cursor (.cursorrules), Copilot (.github/copilot-instructions.md), Continue (.continue/), Claude Code (.claude/)
+- Monorepo per-workspace generation with concurrent analysis
+- Ollama AI enrichment for semantic insights via local LLMs
+- VS Code extension for GUI-based scanning
+- Parallel file analysis with incremental scanning
+- Watch mode for auto-regeneration on file changes
+- AST-based code pattern detection (Go, JS/TS, Python)
+- Framework and architecture auto-detection
+
+**Tech Stack:** Go, Cobra CLI, Tree-sitter AST, Ollama API, TypeScript (VS Code extension), GitHub Actions, GoReleaser
+
+---
+
+### TokenMeter — Claude Code Token Tracker
+**Repository:** https://github.com/Priyans-hu/tokenmeter
+
+A macOS menu bar application for visualizing Claude Code token usage. Helps developers track costs, monitor sessions, and stay on top of AI spending.
+
+**Tech Stack:** Swift, SwiftUI, macOS native APIs
+
+---
+
+### Ledger — Shop Management System
+**Repository:** https://github.com/Priyans-hu/ledger
+
+Shop management system designed for Indian small businesses with customer tracking, GST-compliant invoicing, and profit analytics.
+
+**Tech Stack:** React, Node.js, PostgreSQL, Docker
+
+**Features:** Customer management, transaction tracking, GST invoicing, profit analytics, multi-user support
+
+---
+
+### UrbanKicks — E-Commerce Platform
+**Repository:** https://github.com/Priyans-hu/UrbanKicks
+
+E-commerce platform for urban footwear with product browsing, secure checkout, and customer reviews.
+
+**Tech Stack:** React, Node.js, MongoDB
+
+---
+
+### StockFlow — Inventory Management
+**Repository:** https://github.com/Priyans-hu/StockFlow
+
+Real-time inventory management application with order tracking and analytics dashboard.
+
+**Tech Stack:** React, Express, MongoDB
+
+---
+
+### PasteBox — Code Sharing Platform
+**Repository:** https://github.com/Priyans-hu/PasteBox
+
+Code snippet sharing platform with syntax highlighting and shareable links.
+
+**Tech Stack:** React, Node.js, Tailwind CSS
+
+---
+
+## Education
+
+**B.E. Computer Science** — Chitkara University, Punjab (2021 - 2025)
+
+Strong foundation in computer science fundamentals, data structures, algorithms, and software engineering principles. Active participation in hackathons and tech initiatives.
+
+---
+
+## Beyond Code
+
+- **Music** — Always vibing to beats. Music fuels creativity.
+- **Photography & Videography** — Capturing moments and stories through the lens. Instagram: [@shotbypriyanshu](https://instagram.com/shotbypriyanshu)
+- **Video Editing** — Crafting stories from raw footage to polished cuts.
+
+---
+
+## Contact Information
+
+| Channel | Link |
+|---------|------|
+| Website | https://priyans-hu.netlify.app |
+| Email | mailpriyanshugarg@gmail.com |
+| GitHub | https://github.com/Priyans-hu |
+| LinkedIn | https://linkedin.com/in/priyans-hu |
+| Instagram | https://instagram.com/shotbypriyanshu |
+
+---
+
+## Availability
+
+Open to interesting projects, collaborations, and opportunities. Best reached via email or LinkedIn.
