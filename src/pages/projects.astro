@@ -6,6 +6,13 @@ import { Layout } from "~/components/dom";
 
 const projects = [
 	{
+		name: "Argus",
+		description: "CLI tool that scans codebases and generates AI-optimized context files for Claude, Cursor, Copilot, and more",
+		tech: ["Go", "Cobra", "AST", "Ollama"],
+		github: "https://github.com/Priyans-hu/argus",
+		color: "blue"
+	},
+	{
 		name: "Ledger",
 		description: "Shop management system with customer tracking, GST invoicing, and profit analytics",
 		tech: ["React", "Node.js", "PostgreSQL", "Docker"],
@@ -25,6 +32,13 @@ const projects = [
 		tech: ["React", "Express", "MongoDB"],
 		github: "https://github.com/Priyans-hu/StockFlow",
 		color: "blue"
+	},
+	{
+		name: "TokenMeter",
+		description: "macOS menu bar app for Claude Code token usage visualization",
+		tech: ["Swift", "SwiftUI", "macOS"],
+		github: "https://github.com/Priyans-hu/tokenmeter",
+		color: "purple"
 	},
 	{
 		name: "PasteBox",
@@ -71,7 +85,7 @@ const colorClasses = {
 };
 ---
 
-<Layout title="Projects | Priyanshu Garg - Full Stack Developer" description="Open source projects by Priyanshu Garg - Ledger, UrbanKicks, StockFlow, PasteBox and more. Full stack web applications built with React, Node.js, and modern technologies.">
+<Layout title="Projects | Priyanshu Garg - Full Stack Developer" description="Open source projects by Priyanshu Garg - Argus, TokenMeter, Ledger, UrbanKicks, StockFlow, PasteBox and more. Built with Go, Swift, React, Node.js, and modern technologies.">
 	<main class="min-h-screen pt-24 pb-16 px-4 sm:px-6">
 		<div class="max-w-5xl mx-auto">
 			<!-- Header -->
