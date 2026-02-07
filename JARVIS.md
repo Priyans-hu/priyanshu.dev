@@ -86,7 +86,7 @@ src/
 const profile = {
   name: "Priyanshu Garg",
   title: "Web Developer & Tech Enthusiast",
-  email: "mailpriyanshugarg@gmail.com",
+  email: "pg.tldr@gmail.com",
   location: "India",
   education: {
     degree: "B.E. Computer Science",
